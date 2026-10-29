@@ -1,35 +1,32 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Wrench, Home, ArrowLeft } from 'lucide-react';
+import { Wrench, ArrowLeft, Search, Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 py-16 text-center bg-white">
-      <div className="max-w-md w-full bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 shadow-xl">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 mb-6 shadow-sm">
-          <Wrench className="w-8 h-8 rotate-45" />
+    <div className="min-h-[75vh] flex items-center justify-center py-16 px-4 bg-slate-50">
+      <div className="max-w-lg w-full text-center">
+        <div className="w-20 h-20 bg-amber-100 text-amber-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border border-amber-200">
+          <Wrench className="w-10 h-10 -rotate-45" />
         </div>
         
-        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">404</h1>
-        <h2 className="text-xl font-semibold text-gray-800 mb-3">Page Off The Radar</h2>
-        <p className="text-gray-600 text-sm mb-8 leading-relaxed">
-          The page you are looking for has been relocated or doesn't exist. Let's get you back on the road.
+        <h1 className="text-7xl font-black text-slate-900 tracking-tight mb-2 font-mono">404</h1>
+        <h2 className="text-2xl font-bold text-slate-900 mb-3">Off-Road Detour: Page Not Found</h2>
+        <p className="text-slate-600 mb-8 text-sm sm:text-base">
+          The auto part, category, or order link you are looking for has been moved or doesn't exist in our workshop catalog.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-900 hover:bg-black text-white font-semibold text-sm shadow-lg shadow-gray-200 transition-all"
+            to="/catalog"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg shadow-sm transition-colors"
           >
-            <Home className="w-4 h-4" />
-            <span>Back to Home</span>
+            <Search className="w-4 h-4" /> Search Auto Parts
           </Link>
           <Link
-            to="/services"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-sm transition-all border border-gray-300"
+            to="/"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-800 font-semibold rounded-lg border border-slate-300 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Browse Services</span>
+            <Home className="w-4 h-4" /> Back to Home
           </Link>
         </div>
       </div>

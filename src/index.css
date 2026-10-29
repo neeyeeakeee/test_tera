@@ -2,40 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-brand-light: #ffffff;
-  --color-brand-card: #f9fafb;
-  --color-brand-border: #e5e7eb;
-  --color-brand-purple: #111827;
-  --color-brand-purple-light: #374151;
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #030712;
+    color: #f3f4f6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 }
 
-body {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #111827;
-}
-
-h1, h2, h3, .font-heading {
-  font-family: 'Chakra Petch', sans-serif;
-  letter-spacing: -0.01em;
-}
-
-.bg-grid-pattern {
-  background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(17, 24, 39, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
-}
-
-.purple-gradient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(17, 24, 39, 0.1) 0%, transparent 70%);
-}
-
-.classic-card-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.classic-card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px -8px rgba(17, 24, 39, 0.15);
-  border-color: rgba(17, 24, 39, 0.4);
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

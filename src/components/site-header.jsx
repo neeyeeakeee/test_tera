@@ -1,199 +1,216 @@
-import React, { useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Wrench, Phone, ShieldCheck, Menu, X, Clock, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { ShoppingBag, Wrench, Menu, X, User, LogOut, PackageCheck, LayoutDashboard } from 'lucide-react';
+import { useAuth } from '../lib/auth-context.jsx';
+import { useCart } from '../lib/cart-context.jsx';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const { user, isAdmin, logout } = useAuth();
+  const { itemCount } = useCart();
+  const navigate = useNavigate();
 
-  const closeMenu = () => setMobileMenuOpen(false);
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+    setMobileMenuOpen(false);
+  };
+
+  const navLinkClass = ({ isActive }) =>
+    `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+      isActive
+        ? 'text-purple-400 bg-purple-950/60 font-semibold border border-purple-800/40'
+        : 'text-slate-300 hover:text-white hover:bg-slate-900'
+    }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-      <div className="bg-gray-900 text-gray-200 text-xs py-1.5 px-4 border-b border-gray-800 hidden sm:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-gray-400" />
-              Serving Greater Atlanta & Surrounding Suburbs
-            </span>
-            <span className="text-gray-700">|</span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-gray-400" />
-              Mon - Sat: 7:00 AM - 8:00 PM
-            </span>
-          </div>
-          <div className="flex items-center space-x-3 text-gray-300">
-            <span className="flex items-center gap-1 text-[11px] bg-gray-800 px-2 py-0.5 rounded border border-gray-700">
-              <ShieldCheck className="w-3 h-3 text-gray-300" />
-              ASE-Certified & Insured Local Techs
-            </span>
-          </div>
-        </div>
+    <header className="sticky top-0 z-40 bg-slate-950 border-b border-purple-950 shadow-md">
+      <div className="bg-purple-950/80 text-purple-200 text-xs py-1.5 px-4 text-center font-medium border-b border-purple-900/40">
+        <span>⚙ On-Demand Auto Parts &amp; Mobile Mechanics in Atlanta, GA • Upfront Pricing</span>
       </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-            <div className="w-11 h-11 rounded-xl bg-gray-900 p-0.5 shadow-md group-hover:shadow-lg transition-all">
-              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center border border-gray-200">
-                <Wrench className="w-5 h-5 text-gray-900 group-hover:rotate-12 transition-transform duration-300" />
-              </div>
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center text-white shadow-md shadow-purple-900/40 group-hover:bg-purple-700 transition-colors">
+              <Wrench className="w-5 h-5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-tight text-gray-900 font-heading flex items-center gap-1">
-                QUICK <span className="text-gray-600">MECHS</span>
+              <span className="text-xl font-bold tracking-tight text-white group-hover:text-purple-400 transition-colors">
+                Quick Mechs
               </span>
-              <span className="text-[10px] tracking-widest text-gray-500 uppercase font-semibold">
-                Mobile & Classic Auto Care
+              <span className="text-xs text-slate-400 font-medium tracking-wide uppercase">
+                Parts &amp; Mobile Service
               </span>
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `transition-colors hover:text-gray-900 ${
-                  isActive ? 'text-gray-900 font-bold border-b-2 border-gray-900 pb-1' : 'text-gray-700'
-                }`
-              }
-            >
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+            <NavLink to="/" className={navLinkClass}>
               Home
             </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `transition-colors hover:text-gray-900 ${
-                  isActive ? 'text-gray-900 font-bold border-b-2 border-gray-900 pb-1' : 'text-gray-700'
-                }`
-              }
-            >
-              Services
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `transition-colors hover:text-gray-900 ${
-                  isActive ? 'text-gray-900 font-bold border-b-2 border-gray-900 pb-1' : 'text-gray-700'
-                }`
-              }
-            >
+            <NavLink to="/about" className={navLinkClass}>
               About Us
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `transition-colors hover:text-gray-900 ${
-                  isActive ? 'text-gray-900 font-bold border-b-2 border-gray-900 pb-1' : 'text-gray-700'
-                }`
-              }
-            >
-              Contact
+            <NavLink to="/catalog" className={navLinkClass}>
+              Parts Catalog
             </NavLink>
+            {user && (
+              <NavLink to="/orders" className={navLinkClass}>
+                My Orders
+              </NavLink>
+            )}
+            {isAdmin && (
+              <NavLink to="/admin" className={navLinkClass}>
+                <span className="flex items-center gap-1 text-purple-300 font-medium">
+                  <LayoutDashboard className="w-4 h-4" />
+                  Admin Dashboard
+                </span>
+              </NavLink>
+            )}
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl border border-gray-200 bg-gray-50 text-xs text-gray-700 shadow-sm">
-              <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-900">
-                <Phone className="w-3.5 h-3.5" />
-              </div>
-              <div className="text-left">
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Atlanta Dispatch</p>
-                <p className="font-bold text-gray-900 tracking-wide">(404) 555-MECH</p>
-              </div>
-            </div>
-
-            <a
-              href={location.pathname === '/' ? '#request-form' : '/#request-form'}
-              className="px-5 py-2.5 text-sm font-bold text-white bg-gray-900 hover:bg-black rounded-xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
+          {/* Right actions: Cart & User */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              to="/cart"
+              className="relative flex items-center gap-2 px-3 py-2 text-slate-300 hover:text-purple-400 hover:bg-slate-900 rounded-lg transition-colors"
+              title="Shopping Cart"
             >
-              Request a Mechanic
-            </a>
+              <ShoppingBag className="w-5 h-5" />
+              <span className="text-sm font-semibold hidden lg:inline">Cart</span>
+              {itemCount > 0 && (
+                <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold text-white bg-purple-600 rounded-full shadow-sm">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
+
+            <div className="h-6 w-[1px] bg-slate-800 mx-1" />
+
+            {user ? (
+              <div className="flex items-center gap-2">
+                <div className="flex flex-col text-right">
+                  <span className="text-xs font-semibold text-white max-w-[120px] truncate">
+                    {user.name}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold text-purple-400">
+                    {user.role}
+                  </span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-950/40 rounded-lg transition-colors"
+                  title="Log out"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors shadow-sm"
+              >
+                <User className="w-4 h-4" />
+                <span>Sign In</span>
+              </Link>
+            )}
           </div>
 
-          <div className="flex items-center md:hidden">
+          {/* Mobile Cart and Menu button */}
+          <div className="flex items-center gap-2 md:hidden">
+            <Link
+              to="/cart"
+              className="relative p-2 text-slate-300 hover:text-purple-400 rounded-lg"
+              aria-label="Cart"
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {itemCount > 0 && (
+                <span className="absolute top-1 right-1 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[11px] font-bold text-white bg-purple-600 rounded-full">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-200 transition-colors"
+              className="p-2 text-slate-300 hover:text-white hover:bg-slate-900 rounded-lg focus:outline-none"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-gray-900" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-4 shadow-lg">
-          <nav className="flex flex-col space-y-2">
+        <div className="md:hidden border-t border-purple-950 bg-slate-950 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+          <NavLink
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-900"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-900"
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            to="/catalog"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-900"
+          >
+            Parts Catalog
+          </NavLink>
+          {user && (
             <NavLink
-              to="/"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `px-3 py-2.5 rounded-xl text-base font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-gray-100 text-gray-900 border-l-4 border-gray-900'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }`
-              }
+              to="/orders"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-900"
             >
-              Home
+              My Orders
             </NavLink>
+          )}
+          {isAdmin && (
             <NavLink
-              to="/services"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `px-3 py-2.5 rounded-xl text-base font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-gray-100 text-gray-900 border-l-4 border-gray-900'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }`
-              }
+              to="/admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-purple-300 bg-purple-950/60"
             >
-              Services
+              Admin Dashboard
             </NavLink>
-            <NavLink
-              to="/about"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `px-3 py-2.5 rounded-xl text-base font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-gray-100 text-gray-900 border-l-4 border-gray-900'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }`
-              }
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              to="/contact"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `px-3 py-2.5 rounded-xl text-base font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-gray-100 text-gray-900 border-l-4 border-gray-900'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }`
-              }
-            >
-              Contact
-            </NavLink>
-          </nav>
+          )}
 
-          <div className="pt-3 border-t border-gray-200 flex flex-col gap-3">
-            <div className="flex items-center gap-2 text-sm text-gray-700 px-3 py-1.5">
-              <Phone className="w-4 h-4 text-gray-900" />
-              <span>Atlanta Dispatch: (404) 555-MECH</span>
-            </div>
-            <a
-              href={location.pathname === '/' ? '#request-form' : '/#request-form'}
-              onClick={closeMenu}
-              className="w-full text-center px-4 py-3 text-sm font-bold text-white bg-gray-900 rounded-xl shadow-md"
-            >
-              Request a Mechanic
-            </a>
+          <div className="pt-3 border-t border-purple-950">
+            {user ? (
+              <div className="space-y-2">
+                <div className="px-3 py-1 text-sm text-slate-400">
+                  Signed in as <span className="font-semibold text-white">{user.name}</span> ({user.email})
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-purple-900/60 text-slate-300 text-sm font-medium hover:bg-slate-900"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-purple-600 text-white text-sm font-semibold hover:bg-purple-700 shadow-sm"
+              >
+                <User className="w-4 h-4" />
+                Sign In or Register
+              </Link>
+            )}
           </div>
         </div>
       )}
