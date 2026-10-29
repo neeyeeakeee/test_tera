@@ -64,7 +64,7 @@ export default function AdminDashboard() {
   if (loading && !admin) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center text-gray-600">
-        <RefreshCw className="w-6 h-6 animate-spin text-purple-600 mr-2" />
+        <RefreshCw className="w-6 h-6 animate-spin text-gray-900 mr-2" />
         <span>Loading Admin Workspace...</span>
       </div>
     );
@@ -72,16 +72,15 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
-      {/* Dashboard Topbar */}
       <header className="border-b border-gray-200 bg-white/90 backdrop-blur sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center text-purple-700">
+            <div className="w-9 h-9 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900">
               <Wrench className="w-5 h-5" />
             </div>
             <div>
               <span className="font-bold text-gray-900 text-base tracking-wide">Quick Mechs</span>
-              <span className="ml-2 text-xs uppercase px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 border border-purple-200 font-semibold">Operations Hub</span>
+              <span className="ml-2 text-xs uppercase px-2 py-0.5 rounded-md bg-gray-100 text-gray-900 border border-gray-200 font-semibold">Operations Hub</span>
             </div>
           </div>
 
@@ -98,7 +97,6 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      {/* Dashboard Content */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {error && (
           <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-2">
@@ -107,12 +105,11 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Metric Badges */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Pending Dispatch</span>
-              <Clock className="w-5 h-5 text-purple-600" />
+              <Clock className="w-5 h-5 text-gray-900" />
             </div>
             <p className="text-2xl font-bold text-gray-900 mt-2">
               {requests.filter(r => r.status === 'pending').length}
@@ -123,7 +120,7 @@ export default function AdminDashboard() {
           <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Total Bookings</span>
-              <Wrench className="w-5 h-5 text-indigo-600" />
+              <Wrench className="w-5 h-5 text-gray-800" />
             </div>
             <p className="text-2xl font-bold text-gray-900 mt-2">{requests.length}</p>
             <p className="text-xs text-gray-500 mt-1">All on-demand service submissions</p>
@@ -132,20 +129,19 @@ export default function AdminDashboard() {
           <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">General Inquiries</span>
-              <MessageSquare className="w-5 h-5 text-emerald-600" />
+              <MessageSquare className="w-5 h-5 text-gray-700" />
             </div>
             <p className="text-2xl font-bold text-gray-900 mt-2">{messages.length}</p>
             <p className="text-xs text-gray-500 mt-1">Messages submitted via contact form</p>
           </div>
         </div>
 
-        {/* View Switcher */}
         <div className="flex border-b border-gray-200 mb-6 gap-6">
           <button
             onClick={() => setActiveTab('requests')}
             className={`pb-3 font-bold text-sm transition-colors border-b-2 ${
               activeTab === 'requests'
-                ? 'border-purple-600 text-purple-700'
+                ? 'border-gray-900 text-gray-900'
                 : 'border-transparent text-gray-500 hover:text-gray-900'
             }`}
           >
@@ -155,7 +151,7 @@ export default function AdminDashboard() {
             onClick={() => setActiveTab('messages')}
             className={`pb-3 font-bold text-sm transition-colors border-b-2 ${
               activeTab === 'messages'
-                ? 'border-purple-600 text-purple-700'
+                ? 'border-gray-900 text-gray-900'
                 : 'border-transparent text-gray-500 hover:text-gray-900'
             }`}
           >
@@ -163,7 +159,6 @@ export default function AdminDashboard() {
           </button>
         </div>
 
-        {/* Tab 1: Service Requests */}
         {activeTab === 'requests' && (
           <div className="space-y-4">
             {requests.length === 0 ? (
@@ -196,11 +191,11 @@ export default function AdminDashboard() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-700">
                       <div className="flex items-center gap-2">
                         <Phone className="w-4 h-4 text-gray-400" />
-                        <a href={`tel:${req.phone}`} className="hover:text-purple-600 font-mono">{req.phone}</a>
+                        <a href={`tel:${req.phone}`} className="hover:text-gray-900 font-mono">{req.phone}</a>
                       </div>
                       <div className="flex items-center gap-2">
                         <Mail className="w-4 h-4 text-gray-400" />
-                        <a href={`mailto:${req.email}`} className="hover:text-purple-600">{req.email}</a>
+                        <a href={`mailto:${req.email}`} className="hover:text-gray-900">{req.email}</a>
                       </div>
                       {req.address && (
                         <div className="flex items-center gap-2 text-gray-600">
@@ -211,7 +206,7 @@ export default function AdminDashboard() {
                     </div>
 
                     <div className="bg-gray-50 p-3.5 rounded-xl border border-gray-200">
-                      <div className="text-xs font-bold uppercase text-purple-700 mb-1">
+                      <div className="text-xs font-bold uppercase text-gray-900 mb-1">
                         Vehicle & Issue Description
                       </div>
                       <div className="text-sm text-gray-900">
@@ -225,7 +220,6 @@ export default function AdminDashboard() {
                     </div>
                   </div>
 
-                  {/* Status Actions */}
                   <div className="flex lg:flex-col items-center justify-end gap-2 border-t lg:border-t-0 lg:border-l border-gray-200 pt-4 lg:pt-0 lg:pl-6">
                     <span className="text-xs text-gray-500 block mb-1 font-bold uppercase">Change Status:</span>
                     <div className="flex flex-wrap lg:flex-col gap-1.5 w-full">
@@ -236,8 +230,8 @@ export default function AdminDashboard() {
                           onClick={() => handleStatusChange(req.id, st)}
                           className={`text-xs px-3 py-1.5 rounded-xl border text-left font-semibold capitalize transition-colors ${
                             req.status === st
-                              ? 'bg-purple-100 border-purple-300 text-purple-900 cursor-default shadow-sm'
-                              : 'bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:text-purple-700'
+                              ? 'bg-gray-100 border-gray-300 text-gray-900 cursor-default shadow-sm'
+                              : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                           }`}
                         >
                           Mark {st}
@@ -251,7 +245,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Tab 2: Contact Messages */}
         {activeTab === 'messages' && (
           <div className="space-y-4">
             {messages.length === 0 ? (
@@ -265,13 +258,13 @@ export default function AdminDashboard() {
                     <div>
                       <h3 className="text-base font-bold text-gray-900">{msg.name}</h3>
                       <div className="flex items-center gap-4 text-xs text-gray-500 mt-1">
-                        <a href={`mailto:${msg.email}`} className="hover:text-purple-600">{msg.email}</a>
-                        {msg.phone && <a href={`tel:${msg.phone}`} className="hover:text-purple-600">{msg.phone}</a>}
+                        <a href={`mailto:${msg.email}`} className="hover:text-gray-900">{msg.email}</a>
+                        {msg.phone && <a href={`tel:${msg.phone}`} className="hover:text-gray-900">{msg.phone}</a>}
                       </div>
                     </div>
                     <span className="text-xs text-gray-400">{new Date(msg.created_at).toLocaleDateString()}</span>
                   </div>
-                  {msg.subject && <div className="text-xs font-bold text-purple-700">Subject: {msg.subject}</div>}
+                  {msg.subject && <div className="text-xs font-bold text-gray-900">Subject: {msg.subject}</div>}
                   <p className="text-sm text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-200">
                     {msg.message}
                   </p>

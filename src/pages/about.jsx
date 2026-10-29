@@ -36,9 +36,8 @@ export default function AboutPage() {
   return (
     <div className="bg-white text-gray-900 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-purple-700 text-xs font-bold uppercase tracking-widest bg-purple-100 border border-purple-200 px-3.5 py-1.5 rounded-full shadow-sm">
+          <span className="text-gray-900 text-xs font-bold uppercase tracking-widest bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
             About Quick Mechs
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight mt-4">
@@ -49,7 +48,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Story Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="space-y-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
@@ -61,8 +59,8 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
               Quick Mechs was founded to deliver a better way. By outfitting vetted master technicians with high-grade mobile diagnostic units and repair vans, we turn your home driveway or company parking lot into a clean, professional service bay.
             </p>
-            <div className="p-5 rounded-2xl bg-purple-50 border border-purple-200 shadow-sm">
-              <p className="text-xs text-purple-700 font-bold uppercase tracking-wider">Our Mission</p>
+            <div className="p-5 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm">
+              <p className="text-xs text-gray-900 font-bold uppercase tracking-wider">Our Mission</p>
               <p className="text-sm text-gray-800 mt-1 font-medium">
                 To provide transparent, fair-priced, and on-demand automotive repair that respects your schedule and safeguards your peace of mind.
               </p>
@@ -85,7 +83,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Core Values */}
         <div className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Our Principles & Standards</h2>
@@ -98,9 +95,9 @@ export default function AboutPage() {
             {values.map((v, i) => {
               const Icon = v.icon;
               return (
-                <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-900 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-600 mb-4 shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900 mb-4 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900">{v.title}</h3>
@@ -112,10 +109,9 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Atlanta Service Area Breakdown */}
         <div className="p-8 sm:p-12 rounded-2xl bg-gray-50 border border-gray-200 mb-16 shadow-sm">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-purple-700 text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 text-gray-900 text-xs font-bold uppercase tracking-wider mb-2">
               <MapPin className="w-4 h-4" />
               Active Coverage Area
             </div>
@@ -129,7 +125,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
               {serviceAreas.map((area, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 bg-white px-3.5 py-2.5 rounded-xl border border-gray-200 shadow-sm">
-                  <CheckCircle className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                  <CheckCircle className="w-3.5 h-3.5 text-gray-900 shrink-0" />
                   <span>{area}</span>
                 </div>
               ))}
@@ -137,16 +133,15 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Call to action */}
-        <div className="text-center bg-gradient-to-r from-purple-900 via-purple-950 to-gray-900 text-white p-10 rounded-2xl border border-purple-800 shadow-xl">
+        <div className="text-center bg-gray-900 text-white p-10 rounded-2xl border border-gray-800 shadow-xl">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Need a Reliable Mechanic Today?</h2>
-          <p className="text-purple-200 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          <p className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto mt-2">
             Submit your vehicle information and receive upfront, transparent repair guidance from our Atlanta team.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link
               to="/#request-form"
-              className="px-6 py-3 rounded-xl bg-white hover:bg-purple-50 text-purple-900 font-semibold text-sm transition-all shadow-lg inline-flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm transition-all shadow-lg inline-flex items-center gap-2"
             >
               Book Mobile Service
               <ArrowRight className="w-4 h-4" />

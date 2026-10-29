@@ -6,8 +6,8 @@
   --color-brand-light: #ffffff;
   --color-brand-card: #f9fafb;
   --color-brand-border: #e5e7eb;
-  --color-brand-purple: #7e22ce;
-  --color-brand-purple-light: #9333ea;
+  --color-brand-purple: #111827;
+  --color-brand-purple-light: #374151;
 }
 
 body {
@@ -21,15 +21,14 @@ h1, h2, h3, .font-heading {
   letter-spacing: -0.01em;
 }
 
-/* Subtle mesh background */
 .bg-grid-pattern {
   background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(147, 51, 234, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(147, 51, 234, 0.04) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(17, 24, 39, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
 }
 
 .purple-gradient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(126, 34, 206, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(17, 24, 39, 0.1) 0%, transparent 70%);
 }
 
 .classic-card-hover {
@@ -37,6 +36,6 @@ h1, h2, h3, .font-heading {
 }
 .classic-card-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px -8px rgba(126, 34, 206, 0.15);
-  border-color: rgba(147, 51, 234, 0.4);
+  box-shadow: 0 16px 32px -8px rgba(17, 24, 39, 0.15);
+  border-color: rgba(17, 24, 39, 0.4);
 }

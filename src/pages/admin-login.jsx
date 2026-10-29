@@ -31,10 +31,10 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center px-4 py-12">
       <div className="max-w-md w-full bg-white border border-gray-200 rounded-2xl p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-purple-600 via-purple-700 to-indigo-600"></div>
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-gray-900 via-gray-800 to-neutral-700"></div>
         
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 mb-3 shadow-sm">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 mb-3 shadow-sm">
             <Wrench className="w-7 h-7" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Quick Mechs Admin</h1>
@@ -61,7 +61,7 @@ export default function AdminLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="owner@quickmechs.com"
-                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors text-sm"
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors text-sm"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function AdminLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors text-sm"
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors text-sm"
               />
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-purple-200 transition-all text-sm"
+            className="w-full py-3.5 px-5 rounded-xl bg-gray-900 hover:bg-black disabled:opacity-50 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-gray-200 transition-all text-sm"
           >
             {loading ? 'Authenticating...' : (
               <>
@@ -98,7 +98,7 @@ export default function AdminLogin() {
         </form>
 
         <div className="mt-8 pt-6 border-t border-gray-200 text-center">
-          <Link to="/" className="text-xs text-gray-500 hover:text-purple-600 transition-colors font-medium">
+          <Link to="/" className="text-xs text-gray-500 hover:text-gray-900 transition-colors font-medium">
             ← Back to Quick Mechs Homepage
           </Link>
         </div>

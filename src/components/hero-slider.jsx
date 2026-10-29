@@ -58,27 +58,25 @@ export default function HeroSlider() {
 
   return (
     <section 
-      className="relative bg-gradient-to-b from-purple-50/50 via-white to-gray-50 border-b border-purple-100 overflow-hidden"
+      className="relative bg-gradient-to-b from-gray-100/60 via-white to-gray-50 border-b border-gray-200 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Subtle background glow */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gray-200/50 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gray-300/30 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Text Content */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold tracking-wide uppercase mb-6 w-fit shadow-sm">
-              <Wrench className="w-3.5 h-3.5 text-purple-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-900 border border-gray-800 text-white text-xs font-bold tracking-wide uppercase mb-6 w-fit shadow-sm">
+              <Wrench className="w-3.5 h-3.5 text-gray-300" />
               <span>{SLIDES[current].badge}</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.1] mb-4">
               {SLIDES[current].title}{' '}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-purple-700 to-indigo-700 font-extrabold mt-1">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-neutral-700 font-extrabold mt-1">
                 {SLIDES[current].highlight}
               </span>
             </h1>
@@ -87,31 +85,29 @@ export default function HeroSlider() {
               {SLIDES[current].description}
             </p>
 
-            {/* Feature Bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-sm text-gray-700">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-gray-900 flex-shrink-0" />
                 <span>Transparent upfront quotes</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-gray-900 flex-shrink-0" />
                 <span>Vetted ASE-standard mobile techs</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-gray-900 flex-shrink-0" />
                 <span>Service at home, office or roadside</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-gray-900 flex-shrink-0" />
                 <span>Serving all Atlanta metro suburbs</span>
               </div>
             </div>
 
-            {/* Actions */}
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#request-form"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-200 transition-all duration-200 transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-sm tracking-wide shadow-lg shadow-gray-200 transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book A Mobile Mechanic
               </a>
@@ -124,9 +120,8 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Image & Slide Display */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-purple-200 bg-white shadow-2xl shadow-purple-100 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3]">
+            <div className="relative rounded-2xl overflow-hidden border border-gray-300 bg-white shadow-2xl shadow-gray-200 aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3]">
               <img
                 src={SLIDES[current].image}
                 alt={SLIDES[current].alt}
@@ -137,16 +132,15 @@ export default function HeroSlider() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
               
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white pointer-events-none">
-                <span className="bg-gray-900/80 backdrop-blur-sm px-3 py-1.5 rounded-md border border-gray-700 text-purple-300 font-medium">
+                <span className="bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-gray-700 text-gray-200 font-medium">
                   Atlanta Mobile Dispatch
                 </span>
-                <span className="bg-gray-900/80 backdrop-blur-sm px-2.5 py-1.5 rounded-md border border-gray-700 text-gray-300 font-mono">
+                <span className="bg-gray-900/90 backdrop-blur-sm px-2.5 py-1.5 rounded-md border border-gray-700 text-gray-300 font-mono">
                   0{current + 1} / 0{SLIDES.length}
                 </span>
               </div>
             </div>
 
-            {/* Slider Navigation Buttons */}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-2">
                 {SLIDES.map((slide, index) => (
@@ -155,7 +149,7 @@ export default function HeroSlider() {
                     onClick={() => setCurrent(index)}
                     aria-label={`Go to slide ${index + 1}`}
                     className={`h-2 transition-all rounded-full ${
-                      current === index ? 'w-8 bg-purple-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                      current === index ? 'w-8 bg-gray-900' : 'w-2 bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
                 ))}
@@ -165,14 +159,14 @@ export default function HeroSlider() {
                 <button
                   onClick={prevSlide}
                   aria-label="Previous slide"
-                  className="h-9 w-9 rounded-lg bg-white hover:bg-purple-50 text-gray-700 hover:text-purple-700 border border-gray-300 flex items-center justify-center transition-colors shadow-sm"
+                  className="h-9 w-9 rounded-lg bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 flex items-center justify-center transition-colors shadow-sm"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={nextSlide}
                   aria-label="Next slide"
-                  className="h-9 w-9 rounded-lg bg-white hover:bg-purple-50 text-gray-700 hover:text-purple-700 border border-gray-300 flex items-center justify-center transition-colors shadow-sm"
+                  className="h-9 w-9 rounded-lg bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 flex items-center justify-center transition-colors shadow-sm"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>

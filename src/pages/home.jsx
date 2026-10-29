@@ -88,18 +88,16 @@ export default function HomePage() {
 
   return (
     <div className="bg-white text-gray-900 min-h-screen">
-      {/* Hero Section with Interactive Slider */}
       <HeroSlider />
 
-      {/* Trust Badges Bar */}
       <section className="border-y border-gray-200 bg-gray-50/80 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustPoints.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="flex items-start gap-3.5 p-5 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 shadow-sm transition-colors">
-                  <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
+                <div key={idx} className="flex items-start gap-3.5 p-5 rounded-2xl bg-white border border-gray-200 hover:border-gray-900 shadow-sm transition-colors">
+                  <div className="p-2.5 rounded-xl bg-gray-100 border border-gray-200 text-gray-900 shrink-0 shadow-sm">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -113,11 +111,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Core Services Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-            <Wrench className="w-3.5 h-3.5 text-purple-600" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-gray-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Wrench className="w-3.5 h-3.5 text-gray-900" />
             Full-Service Mobile Workshop
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
@@ -140,21 +137,19 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-800 font-semibold text-sm transition-all shadow-sm"
           >
             View All Maintenance & Repair Services
-            <ArrowRight className="w-4 h-4 text-purple-600" />
+            <ArrowRight className="w-4 h-4 text-gray-900" />
           </Link>
         </div>
       </section>
 
-      {/* How Quick Mechs Works (Uber for Auto Repair) */}
       <HowItWorks />
 
-      {/* Classic Auto Shop Advantage vs Traditional Shops */}
       <section className="py-20 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-wider shadow-sm">
-                <Car className="w-3.5 h-3.5 text-purple-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-gray-900 text-xs font-bold uppercase tracking-wider shadow-sm">
+                <Car className="w-3.5 h-3.5 text-gray-900" />
                 Transparent & Honest Auto Care
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
@@ -172,7 +167,7 @@ export default function HomePage() {
                   'Coverage across Atlanta for both personal vehicles and light commercial fleets.'
                 ].map((point, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-gray-900 shrink-0 mt-0.5" />
                     <span className="text-sm text-gray-700">{point}</span>
                   </div>
                 ))}
@@ -181,7 +176,7 @@ export default function HomePage() {
               <div className="pt-4 flex flex-wrap gap-4">
                 <a
                   href="#request-form"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-sm transition-all shadow-lg shadow-gray-200"
                 >
                   Request a Mechanic
                   <ArrowRight className="w-4 h-4" />
@@ -210,7 +205,7 @@ export default function HomePage() {
                     <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Local Atlanta Guarantee</p>
                     <p className="text-sm font-bold text-gray-900 mt-0.5">12-Month / 12,000-Mile Warranty on Parts & Labor</p>
                   </div>
-                  <ShieldCheck className="w-8 h-8 text-purple-600 shrink-0" />
+                  <ShieldCheck className="w-8 h-8 text-gray-900 shrink-0" />
                 </div>
               </div>
             </div>
@@ -218,7 +213,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Real Atlanta Driver Reviews */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Local Customer Feedback</h2>
@@ -229,7 +223,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((rev, i) => (
-            <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 flex flex-col justify-between hover:border-purple-300 shadow-sm hover:shadow-md transition-all">
+            <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 flex flex-col justify-between hover:border-gray-900 shadow-sm hover:shadow-md transition-all">
               <div>
                 <div className="flex items-center gap-1 text-amber-500 mb-3">
                   {[...Array(rev.rating)].map((_, starIndex) => (
@@ -243,7 +237,7 @@ export default function HomePage() {
                   <p className="text-sm font-bold text-gray-900">{rev.name}</p>
                   <p className="text-xs text-gray-500">{rev.neighborhood}</p>
                 </div>
-                <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md shadow-sm">
+                <span className="text-xs font-bold text-gray-900 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-md shadow-sm">
                   Verified Service
                 </span>
               </div>
@@ -252,7 +246,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Service Request & Quote Section */}
       <div id="request-form">
         <ServiceRequestForm />
       </div>

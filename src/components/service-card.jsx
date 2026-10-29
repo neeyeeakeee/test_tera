@@ -13,7 +13,7 @@ export default function ServiceCard({
   onSelect
 }) {
   return (
-    <div className="bg-white hover:bg-white border border-gray-200 hover:border-purple-300 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-100 group">
+    <div className="bg-white hover:bg-white border border-gray-200 hover:border-gray-900 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200 group">
       {image && (
         <div className="relative h-48 w-full overflow-hidden bg-gray-100">
           <img
@@ -25,7 +25,7 @@ export default function ServiceCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           {badge && (
-            <div className="absolute top-3 left-3 bg-purple-900 text-purple-100 border border-purple-700 text-[11px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm">
+            <div className="absolute top-3 left-3 bg-gray-900 text-white border border-gray-700 text-[11px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm">
               {badge}
             </div>
           )}
@@ -35,15 +35,15 @@ export default function ServiceCard({
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-9 w-9 rounded-lg bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-600 flex-shrink-0 shadow-sm">
+            <div className="h-9 w-9 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900 flex-shrink-0 shadow-sm">
               <IconComponent className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors tracking-tight">
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-gray-900 transition-colors tracking-tight">
                 {title}
               </h3>
               {subtitle && (
-                <p className="text-xs text-purple-600 font-medium">{subtitle}</p>
+                <p className="text-xs text-gray-600 font-medium">{subtitle}</p>
               )}
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function ServiceCard({
             <ul className="space-y-2 mb-6 pt-2 border-t border-gray-100">
               {features.map((item, idx) => (
                 <li key={idx} className="text-xs text-gray-700 flex items-start gap-2">
-                  <Check className="w-3.5 h-3.5 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <Check className="w-3.5 h-3.5 text-gray-900 mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -68,7 +68,7 @@ export default function ServiceCard({
           <a
             href="#request-form"
             onClick={() => onSelect && onSelect(title)}
-            className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-purple-600 text-gray-800 hover:text-white font-semibold text-xs tracking-wide uppercase transition-colors duration-200"
+            className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-gray-900 text-gray-800 hover:text-white font-semibold text-xs tracking-wide uppercase transition-colors duration-200"
           >
             <span>Book This Service</span>
             <ArrowRight className="w-3.5 h-3.5" />

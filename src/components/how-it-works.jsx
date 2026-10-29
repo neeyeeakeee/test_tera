@@ -30,7 +30,7 @@ export default function HowItWorks() {
     <section className="py-20 bg-gray-50 border-b border-gray-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-900 border border-gray-800 text-white text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
             <span>The Quick Mechs Way</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
@@ -47,22 +47,22 @@ export default function HowItWorks() {
             return (
               <div 
                 key={item.step}
-                className="relative bg-white border border-gray-200 hover:border-purple-300 rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-100 group"
+                className="relative bg-white border border-gray-200 hover:border-gray-900 rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200 group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-12 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <div className="h-12 w-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900 group-hover:bg-gray-900 group-hover:text-white transition-colors duration-300 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-3xl font-black text-gray-200 group-hover:text-purple-200 font-mono transition-colors">
+                    <span className="text-3xl font-black text-gray-300 group-hover:text-gray-400 font-mono transition-colors">
                       {item.step}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-1 tracking-tight group-hover:text-purple-700 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-1 tracking-tight group-hover:text-gray-900 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-purple-600 font-semibold uppercase tracking-wider mb-3">
+                  <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider mb-3">
                     {item.subtitle}
                   </p>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -71,7 +71,7 @@ export default function HowItWorks() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-500">
-                  <Clock className="w-3.5 h-3.5 text-purple-600" />
+                  <Clock className="w-3.5 h-3.5 text-gray-900" />
                   <span>Fast dispatch across Atlanta</span>
                 </div>
               </div>
@@ -79,19 +79,18 @@ export default function HowItWorks() {
           })}
         </div>
 
-        {/* Comparison Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-purple-900 via-purple-950 to-gray-900 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gray-900 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <h4 className="text-lg font-bold text-white mb-1">
               Need Urgent Diagnostic Help or Stranded on the Road?
             </h4>
-            <p className="text-sm text-purple-200 max-w-xl">
+            <p className="text-sm text-gray-300 max-w-xl">
               Our mobile technicians carry on-board diagnostic scanners, commercial jump starters, and brake testing instruments for same-day service.
             </p>
           </div>
           <a
             href="#request-form"
-            className="px-6 py-3 rounded-xl bg-white hover:bg-purple-50 text-purple-900 font-bold text-sm tracking-wide shadow-lg whitespace-nowrap transition-colors flex-shrink-0"
+            className="px-6 py-3 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-sm tracking-wide shadow-lg whitespace-nowrap transition-colors flex-shrink-0"
           >
             Request Mobile Tech
           </a>

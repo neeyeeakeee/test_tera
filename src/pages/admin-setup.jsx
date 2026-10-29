@@ -93,7 +93,7 @@ export default function AdminSetupPage() {
           <div className="mt-6">
             <Link
               to="/admin/login"
-              className="inline-block px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-colors shadow-md"
+              className="inline-block px-5 py-2.5 rounded-xl bg-gray-900 hover:bg-black text-white font-medium text-sm transition-colors shadow-md"
             >
               Go to Admin Login
             </Link>
@@ -107,7 +107,7 @@ export default function AdminSetupPage() {
     <div className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-4 py-16">
       <div className="max-w-md w-full bg-white border border-gray-200 rounded-2xl p-8 shadow-xl">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 mx-auto flex items-center justify-center mb-3 shadow-sm">
+          <div className="w-12 h-12 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 mx-auto flex items-center justify-center mb-3 shadow-sm">
             <KeyRound className="w-6 h-6" />
           </div>
           <h1 className="text-2xl font-black text-gray-900">Initial Admin Setup</h1>
@@ -142,7 +142,7 @@ export default function AdminSetupPage() {
               value={token}
               onChange={(e) => setToken(e.target.value)}
               placeholder="Provided setup token"
-              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
             />
           </div>
 
@@ -157,7 +157,7 @@ export default function AdminSetupPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Owner Name"
-                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
               <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -174,7 +174,7 @@ export default function AdminSetupPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="owner@quickmechs.com"
-                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
               <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -192,7 +192,7 @@ export default function AdminSetupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
               <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -201,7 +201,7 @@ export default function AdminSetupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200 mt-2"
+            className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-black disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-gray-200 mt-2"
           >
             {loading ? 'Creating Account...' : 'Complete Admin Setup'}
           </button>

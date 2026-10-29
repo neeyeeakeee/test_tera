@@ -50,7 +50,7 @@ export default function ContactPage() {
     <div className="bg-white text-gray-900 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-purple-700 text-xs font-bold uppercase tracking-widest bg-purple-100 border border-purple-200 px-3.5 py-1.5 rounded-full shadow-sm">
+          <span className="text-gray-900 text-xs font-bold uppercase tracking-widest bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
             Get in Touch
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight mt-4">
@@ -62,7 +62,6 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Contact Details */}
           <div className="lg:col-span-5 space-y-8">
             <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200 space-y-6 shadow-sm">
               <h2 className="text-xl font-bold text-gray-900">Shop & Dispatch Information</h2>
@@ -72,7 +71,7 @@ export default function ContactPage() {
 
               <div className="space-y-4 pt-2">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
+                  <div className="p-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-900 shrink-0 shadow-sm">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -83,7 +82,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
+                  <div className="p-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-900 shrink-0 shadow-sm">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
@@ -94,7 +93,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
+                  <div className="p-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-900 shrink-0 shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
@@ -105,15 +104,14 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-purple-50 border border-purple-200 shadow-sm">
-              <h3 className="text-sm font-bold text-purple-900">Need immediate on-demand repair?</h3>
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm">
+              <h3 className="text-sm font-bold text-gray-900">Need immediate on-demand repair?</h3>
               <p className="text-xs text-gray-600 mt-1 leading-relaxed">
                 For faster technician dispatch and upfront pricing, use our direct repair booking form on the homepage.
               </p>
             </div>
           </div>
 
-          {/* Form */}
           <div className="lg:col-span-7">
             <div className="p-8 sm:p-10 rounded-2xl bg-white border border-gray-200 shadow-xl">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Send Us a Message</h2>
@@ -149,7 +147,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Michael Miller"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                   <div>
@@ -163,7 +161,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                 </div>
@@ -179,7 +177,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(404) 555-0199"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                   <div>
@@ -192,7 +190,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="Inquiry or question"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                 </div>
@@ -208,14 +206,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="How can we assist you with your vehicle or fleet?"
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-gray-900 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-gray-900 hover:bg-black disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-gray-200"
                 >
                   {loading ? 'Sending Message...' : (
                     <>
