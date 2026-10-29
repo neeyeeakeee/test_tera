@@ -1,0 +1,34 @@
+# Built by Tara (QuickSignals). GitHub builds your website here; QuickSignals then publishes the built
+# files. It runs only for Tara's build branch, has read-only access to this repo, and needs no keys.
+name: Tara build
+
+on:
+  push:
+    branches: [tara-builds]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node node_modules/vite/bin/vite.js build --outDir dist --emptyOutDir
+        env:
+          NODE_ENV: production
+          CI: '1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 1
+          if-no-files-found: error

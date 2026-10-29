@@ -1,0 +1,4 @@
+/* Written by us, never by Tara. Her own styles go in src/index.css. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
