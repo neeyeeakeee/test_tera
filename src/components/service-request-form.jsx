@@ -57,36 +57,36 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
   };
 
   return (
-    <section id="request-form" className="py-20 bg-black relative border-b border-purple-950/40 scroll-mt-20">
+    <section id="request-form" className="py-20 bg-gray-50 relative border-b border-gray-200 scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800/50 text-purple-300 text-xs font-semibold uppercase tracking-widest mb-3">
-            <Wrench className="w-3.5 h-3.5 text-purple-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+            <Wrench className="w-3.5 h-3.5 text-purple-600" />
             <span>Fast Mobile Dispatch</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
             Request a Mobile Mechanic or Get an Upfront Quote
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             Serving everyday drivers and fleet managers in Atlanta. Provide your vehicle details below and we will confirm an on-demand technician for you.
           </p>
         </div>
 
-        <div className="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 sm:p-10 shadow-2xl shadow-purple-950/40">
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-xl shadow-purple-50">
           {status.state === 'success' ? (
             <div className="text-center py-10 px-4">
-              <div className="h-16 w-16 bg-purple-950/80 border border-purple-600 rounded-full flex items-center justify-center text-purple-400 mx-auto mb-6 shadow-lg shadow-purple-900/50">
+              <div className="h-16 w-16 bg-purple-100 border border-purple-300 rounded-full flex items-center justify-center text-purple-600 mx-auto mb-6 shadow-md">
                 <CheckCircle className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
                 Request Dispatched Successfully!
               </h3>
-              <p className="text-zinc-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+              <p className="text-gray-600 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
                 {status.message}
               </p>
               <button
                 onClick={() => setStatus({ state: 'idle', message: '' })}
-                className="px-6 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition-colors"
+                className="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm transition-colors shadow-md"
               >
                 Submit Another Request
               </button>
@@ -94,28 +94,28 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {status.state === 'error' && (
-                <div className="p-4 rounded-xl bg-red-950/60 border border-red-800/70 text-red-200 text-sm flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                   <span>{status.message}</span>
                 </div>
               )}
 
-              <div className="border-b border-zinc-800 pb-4">
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-1">
+              <div className="border-b border-gray-200 pb-4">
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-700 mb-1">
                   1. Contact Information
                 </h4>
-                <p className="text-xs text-zinc-400">
+                <p className="text-xs text-gray-500">
                   Where should our technician reach you with arrival times and job status?
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Full Name *
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-zinc-500 absolute left-3 top-3" />
+                    <User className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
                     <input
                       type="text"
                       name="name"
@@ -123,17 +123,17 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Alex Miller"
-                      className="w-full pl-9 pr-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Phone Number *
                   </label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-zinc-500 absolute left-3 top-3" />
+                    <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
                     <input
                       type="tel"
                       name="phone"
@@ -141,17 +141,17 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(404) 555-0123"
-                      className="w-full pl-9 pr-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Email Address *
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-zinc-500 absolute left-3 top-3" />
+                    <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
                     <input
                       type="email"
                       name="email"
@@ -159,24 +159,24 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="alex@example.com"
-                      className="w-full pl-9 pr-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="border-b border-zinc-800 pb-4 pt-2">
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-1">
+              <div className="border-b border-gray-200 pb-4 pt-2">
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-700 mb-1">
                   2. Vehicle Information
                 </h4>
-                <p className="text-xs text-zinc-400">
+                <p className="text-xs text-gray-500">
                   Details ensure our mobile mechanic arrives with matching diagnostics and parts.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Year
                   </label>
                   <input
@@ -185,11 +185,11 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                     value={formData.vehicle_year}
                     onChange={handleChange}
                     placeholder="e.g. 2019"
-                    className="w-full px-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Make
                   </label>
                   <input
@@ -198,11 +198,11 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                     value={formData.vehicle_make}
                     onChange={handleChange}
                     placeholder="e.g. Toyota, Ford, BMW"
-                    className="w-full px-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Model
                   </label>
                   <input
@@ -211,23 +211,23 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                     value={formData.vehicle_model}
                     onChange={handleChange}
                     placeholder="e.g. Camry, F-150, 330i"
-                    className="w-full px-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                   />
                 </div>
               </div>
 
-              <div className="border-b border-zinc-800 pb-4 pt-2">
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-400 mb-1">
+              <div className="border-b border-gray-200 pb-4 pt-2">
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-purple-700 mb-1">
                   3. Service & Location
                 </h4>
-                <p className="text-xs text-zinc-400">
+                <p className="text-xs text-gray-500">
                   Select the main symptom or repair requirement.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Primary Issue / Service Needed *
                   </label>
                   <select
@@ -235,7 +235,7 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                     required
                     value={formData.issue}
                     onChange={handleChange}
-                    className="w-full px-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                   >
                     <option value="Car Won't Start">Car Won't Start (No-Start / Cranking)</option>
                     <option value="Dead Battery">Dead Battery / Replacement</option>
@@ -251,25 +251,25 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                     Service Address or Atlanta Area
                   </label>
                   <div className="relative">
-                    <MapPin className="w-4 h-4 text-zinc-500 absolute left-3 top-3" />
+                    <MapPin className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
                     <input
                       type="text"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
                       placeholder="Driveway or parking lot address (e.g. Midtown Atlanta)"
-                      className="w-full pl-9 pr-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                     />
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
                   Symptom Notes & Repair History
                 </label>
                 <textarea
@@ -278,14 +278,14 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                   value={formData.notes}
                   onChange={handleChange}
                   placeholder="Tell us any sounds, warning lights, or when the problem started..."
-                  className="w-full px-3 py-2.5 bg-black/70 border border-zinc-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                  className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-purple-600 focus:ring-1 focus:ring-purple-600 transition-colors"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
                 disabled={status.state === 'loading'}
-                className="w-full py-4 px-6 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm tracking-wider uppercase transition-all duration-200 shadow-xl shadow-purple-950/60 flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full py-4 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm tracking-wider uppercase transition-all duration-200 shadow-xl shadow-purple-200 flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {status.state === 'loading' ? (
                   <>
@@ -301,7 +301,7 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
               </button>
 
               <div className="text-center">
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-gray-500">
                   No upfront payment required to submit a quote request. An Atlanta certified technician will confirm parts and time estimate with you directly.
                 </p>
               </div>

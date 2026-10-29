@@ -47,16 +47,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-neutral-950 text-neutral-100 min-h-screen py-16">
+    <div className="bg-white text-gray-900 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-purple-400 text-xs font-semibold uppercase tracking-widest bg-purple-950/60 border border-purple-800/40 px-3 py-1 rounded-full">
+          <span className="text-purple-700 text-xs font-bold uppercase tracking-widest bg-purple-100 border border-purple-200 px-3.5 py-1.5 rounded-full shadow-sm">
             Get in Touch
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-4">
+          <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight mt-4">
             We\'re Here to Help Atlanta Drivers
           </h1>
-          <p className="mt-4 text-neutral-400 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
             Have a question regarding service availability, custom repairs, or fleet maintenance? Send us a message or reach out to our team.
           </p>
         </div>
@@ -64,50 +64,50 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Contact Details */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-6">
-              <h2 className="text-xl font-bold text-white">Shop & Dispatch Information</h2>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200 space-y-6 shadow-sm">
+              <h2 className="text-xl font-bold text-gray-900">Shop & Dispatch Information</h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
                 Quick Mechs dispatches mobile mechanics across the Atlanta metropolitan area directly to your home, workplace, or roadside.
               </p>
 
               <div className="space-y-4 pt-2">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-purple-950/80 border border-purple-800/40 text-purple-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400 uppercase font-semibold">Service Headquarters</p>
-                    <p className="text-sm font-medium text-neutral-200 mt-0.5">Atlanta, Georgia</p>
-                    <p className="text-xs text-neutral-500 mt-0.5">Fulton, DeKalb, Cobb & Gwinnett Counties</p>
+                    <p className="text-xs text-gray-500 uppercase font-bold">Service Headquarters</p>
+                    <p className="text-sm font-semibold text-gray-900 mt-0.5">Atlanta, Georgia</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Fulton, DeKalb, Cobb & Gwinnett Counties</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-purple-950/80 border border-purple-800/40 text-purple-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400 uppercase font-semibold">Dispatch Hours</p>
-                    <p className="text-sm font-medium text-neutral-200 mt-0.5">Monday – Saturday: 7:30 AM – 7:00 PM</p>
-                    <p className="text-xs text-neutral-500 mt-0.5">Sunday: Emergency Roadside by Appointment</p>
+                    <p className="text-xs text-gray-500 uppercase font-bold">Dispatch Hours</p>
+                    <p className="text-sm font-semibold text-gray-900 mt-0.5">Monday – Saturday: 7:30 AM – 7:00 PM</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Sunday: Emergency Roadside by Appointment</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-purple-950/80 border border-purple-800/40 text-purple-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-purple-100 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400 uppercase font-semibold">Online Support</p>
-                    <p className="text-sm font-medium text-neutral-200 mt-0.5">support@quickmechs.local</p>
+                    <p className="text-xs text-gray-500 uppercase font-bold">Online Support</p>
+                    <p className="text-sm font-semibold text-gray-900 mt-0.5">support@quickmechs.local</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-purple-950/40 border border-purple-800/40">
-              <h3 className="text-sm font-bold text-purple-300">Need immediate on-demand repair?</h3>
-              <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
+            <div className="p-6 rounded-2xl bg-purple-50 border border-purple-200 shadow-sm">
+              <h3 className="text-sm font-bold text-purple-900">Need immediate on-demand repair?</h3>
+              <p className="text-xs text-gray-600 mt-1 leading-relaxed">
                 For faster technician dispatch and upfront pricing, use our direct repair booking form on the homepage.
               </p>
             </div>
@@ -115,22 +115,22 @@ export default function ContactPage() {
 
           {/* Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-neutral-900 border border-neutral-800">
-              <h2 className="text-2xl font-bold text-white mb-2">Send Us a Message</h2>
-              <p className="text-sm text-neutral-400 mb-8">
+            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-gray-200 shadow-xl">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Send Us a Message</h2>
+              <p className="text-sm text-gray-600 mb-8">
                 Fill out the form below and our customer support coordinators will follow up promptly.
               </p>
 
               {status.type && (
-                <div className={`p-4 rounded-lg mb-6 flex items-start gap-3 border ${
+                <div className={`p-4 rounded-xl mb-6 flex items-start gap-3 border ${
                   status.type === 'success' 
-                    ? 'bg-emerald-950/60 border-emerald-800 text-emerald-200' 
-                    : 'bg-rose-950/60 border-rose-800 text-rose-200'
+                    ? 'bg-emerald-50 border-emerald-200 text-emerald-800' 
+                    : 'bg-rose-50 border-rose-200 text-rose-800'
                 }`}>
                   {status.type === 'success' ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                    <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                   )}
                   <p className="text-sm">{status.message}</p>
                 </div>
@@ -139,7 +139,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                       Your Name *
                     </label>
                     <input
@@ -149,11 +149,11 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Michael Miller"
-                      className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -163,14 +163,14 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                       Phone Number (Optional)
                     </label>
                     <input
@@ -179,11 +179,11 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(404) 555-0199"
-                      className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                       Subject
                     </label>
                     <input
@@ -192,13 +192,13 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="Inquiry or question"
-                      className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                     Message *
                   </label>
                   <textarea
@@ -208,14 +208,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="How can we assist you with your vehicle or fleet?"
-                    className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="inline-flex items-center justify-center gap-2 w-full py-3 px-6 rounded-lg bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-semibold text-sm transition-all shadow-lg shadow-purple-950/60"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200"
                 >
                   {loading ? 'Sending Message...' : (
                     <>

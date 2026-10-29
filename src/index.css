@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --color-brand-dark: #0c0a10;
-  --color-brand-card: #151022;
-  --color-brand-border: #2c1b44;
+  --color-brand-light: #ffffff;
+  --color-brand-card: #f9fafb;
+  --color-brand-border: #e5e7eb;
   --color-brand-purple: #7e22ce;
-  --color-brand-purple-light: #a855f7;
+  --color-brand-purple-light: #9333ea;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  background-color: #0c0a10;
-  color: #f3f4f6;
+  background-color: #ffffff;
+  color: #111827;
 }
 
 h1, h2, h3, .font-heading {
@@ -21,15 +21,15 @@ h1, h2, h3, .font-heading {
   letter-spacing: -0.01em;
 }
 
-/* Subtle classic auto workshop mesh background */
+/* Subtle mesh background */
 .bg-grid-pattern {
   background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(147, 51, 234, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(147, 51, 234, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(147, 51, 234, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(147, 51, 234, 0.04) 1px, transparent 1px);
 }
 
 .purple-gradient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(126, 34, 206, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(126, 34, 206, 0.1) 0%, transparent 70%);
 }
 
 .classic-card-hover {
@@ -37,6 +37,6 @@ h1, h2, h3, .font-heading {
 }
 .classic-card-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px -8px rgba(126, 34, 206, 0.2);
-  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 16px 32px -8px rgba(126, 34, 206, 0.15);
+  border-color: rgba(147, 51, 234, 0.4);
 }

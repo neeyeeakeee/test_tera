@@ -73,27 +73,27 @@ export default function AdminSetupPage() {
 
   if (isOpen === null) {
     return (
-      <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center p-4">
-        <p className="text-neutral-400 text-sm">Verifying setup status...</p>
+      <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center p-4">
+        <p className="text-gray-500 text-sm">Verifying setup status...</p>
       </div>
     );
   }
 
   if (!isOpen) {
     return (
-      <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-8 text-center">
-          <div className="w-12 h-12 rounded-full bg-neutral-800 text-neutral-400 mx-auto flex items-center justify-center mb-4">
+      <div className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white border border-gray-200 rounded-2xl p-8 text-center shadow-sm">
+          <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-600 mx-auto flex items-center justify-center mb-4">
             <Lock className="w-6 h-6" />
           </div>
-          <h1 className="text-xl font-bold text-white">Admin Setup Unavailable</h1>
-          <p className="text-sm text-neutral-400 mt-2">
+          <h1 className="text-xl font-bold text-gray-900">Admin Setup Unavailable</h1>
+          <p className="text-sm text-gray-500 mt-2">
             An administrator has already been registered or setup is currently closed.
           </p>
           <div className="mt-6">
             <Link
               to="/admin/login"
-              className="inline-block px-5 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-colors"
+              className="inline-block px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-colors shadow-md"
             >
               Go to Admin Login
             </Link>
@@ -104,28 +104,28 @@ export default function AdminSetupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center p-4 py-16">
-      <div className="max-w-md w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-8 shadow-2xl">
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center p-4 py-16">
+      <div className="max-w-md w-full bg-white border border-gray-200 rounded-2xl p-8 shadow-xl">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-full bg-purple-950/80 border border-purple-800/50 text-purple-400 mx-auto flex items-center justify-center mb-3">
+          <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 mx-auto flex items-center justify-center mb-3 shadow-sm">
             <KeyRound className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-black text-white">Initial Admin Setup</h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <h1 className="text-2xl font-black text-gray-900">Initial Admin Setup</h1>
+          <p className="text-xs text-gray-500 mt-1">
             Create the primary owner account for Quick Mechs dashboard
           </p>
         </div>
 
         {status.type && (
-          <div className={`p-4 rounded-lg mb-6 flex items-start gap-3 border text-xs ${
+          <div className={`p-4 rounded-xl mb-6 flex items-start gap-3 border text-xs ${
             status.type === 'success'
-              ? 'bg-emerald-950/60 border-emerald-800 text-emerald-200'
-              : 'bg-rose-950/60 border-rose-800 text-rose-200'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+              : 'bg-rose-50 border-rose-200 text-rose-800'
           }`}>
             {status.type === 'success' ? (
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             ) : (
-              <ShieldAlert className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
             )}
             <span>{status.message}</span>
           </div>
@@ -133,7 +133,7 @@ export default function AdminSetupPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
               Setup Token *
             </label>
             <input
@@ -142,12 +142,12 @@ export default function AdminSetupPage() {
               value={token}
               onChange={(e) => setToken(e.target.value)}
               placeholder="Provided setup token"
-              className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600"
+              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
               Full Name *
             </label>
             <div className="relative">
@@ -157,14 +157,14 @@ export default function AdminSetupPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Owner Name"
-                className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
-              <User className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3" />
+              <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
               Admin Email *
             </label>
             <div className="relative">
@@ -174,14 +174,14 @@ export default function AdminSetupPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="owner@quickmechs.com"
-                className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
-              <Mail className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3" />
+              <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
               Password (Min 8 Characters) *
             </label>
             <div className="relative">
@@ -192,16 +192,16 @@ export default function AdminSetupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-4 py-2.5 rounded-lg bg-neutral-950 border border-neutral-800 focus:border-purple-500 focus:outline-none text-white text-sm placeholder-neutral-600 pl-10"
+                className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-300 focus:border-purple-600 focus:outline-none text-gray-900 text-sm placeholder-gray-400 pl-10"
               />
-              <Lock className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3" />
+              <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-purple-950/60 mt-2"
+            className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200 mt-2"
           >
             {loading ? 'Creating Account...' : 'Complete Admin Setup'}
           </button>

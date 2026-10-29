@@ -87,24 +87,24 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="bg-neutral-950 text-neutral-100 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen">
       {/* Hero Section with Interactive Slider */}
       <HeroSlider />
 
       {/* Trust Badges Bar */}
-      <section className="border-y border-neutral-800 bg-neutral-900/60 py-8">
+      <section className="border-y border-gray-200 bg-gray-50/80 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustPoints.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="flex items-start gap-3 p-4 rounded-lg bg-neutral-900/40 border border-neutral-800/80 hover:border-purple-500/40 transition-colors">
-                  <div className="p-2.5 rounded-lg bg-purple-950/60 border border-purple-800/50 text-purple-400 shrink-0">
+                <div key={idx} className="flex items-start gap-3.5 p-5 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 shadow-sm transition-colors">
+                  <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 shrink-0 shadow-sm">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm text-neutral-100">{item.title}</h3>
-                    <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{item.text}</p>
+                    <h3 className="font-bold text-sm text-gray-900">{item.title}</h3>
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               );
@@ -116,31 +116,31 @@ export default function HomePage() {
       {/* Core Services Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/70 border border-purple-800/50 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Wrench className="w-3.5 h-3.5 text-purple-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Wrench className="w-3.5 h-3.5 text-purple-600" />
             Full-Service Mobile Workshop
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             Classic Auto Shop Expertise, Brought to Your Doorstep
           </h2>
-          <p className="mt-4 text-neutral-400 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
             Skip traditional repair shop wait times and expensive towing bills. Our Atlanta mechanics come to your home, office, or roadside with professional-grade diagnostics and quality replacement parts.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <ServiceCard key={service.id} {...service} />
           ))}
         </div>
 
         <div className="mt-12 text-center">
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-neutral-900 border border-neutral-700 hover:border-purple-500 text-white font-medium text-sm transition-all hover:bg-neutral-800"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-800 font-semibold text-sm transition-all shadow-sm"
           >
             View All Maintenance & Repair Services
-            <ArrowRight className="w-4 h-4 text-purple-400" />
+            <ArrowRight className="w-4 h-4 text-purple-600" />
           </Link>
         </div>
       </section>
@@ -149,18 +149,18 @@ export default function HomePage() {
       <HowItWorks />
 
       {/* Classic Auto Shop Advantage vs Traditional Shops */}
-      <section className="py-20 bg-neutral-900/40 border-y border-neutral-800">
+      <section className="py-20 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/70 border border-purple-800/50 text-purple-300 text-xs font-semibold uppercase tracking-wider">
-                <Car className="w-3.5 h-3.5 text-purple-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-wider shadow-sm">
+                <Car className="w-3.5 h-3.5 text-purple-600" />
                 Transparent & Honest Auto Care
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
                 Why Atlanta Drivers Choose Quick Mechs Over Dealerships
               </h2>
-              <p className="text-neutral-300 text-base leading-relaxed">
+              <p className="text-gray-600 text-base leading-relaxed">
                 Traditional repair facilities often hit drivers with unexpected diagnostic fees, high markups, and days without transportation. We built Quick Mechs to deliver genuine master craftsmanship with modern on-demand transparency.
               </p>
 
@@ -172,8 +172,8 @@ export default function HomePage() {
                   'Coverage across Atlanta for both personal vehicles and light commercial fleets.'
                 ].map((point, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
-                    <span className="text-sm text-neutral-300">{point}</span>
+                    <CheckCircle2 className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-700">{point}</span>
                   </div>
                 ))}
               </div>
@@ -181,14 +181,14 @@ export default function HomePage() {
               <div className="pt-4 flex flex-wrap gap-4">
                 <a
                   href="#request-form"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm transition-all shadow-lg shadow-purple-900/40"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm transition-all shadow-lg shadow-purple-200"
                 >
                   Request a Mechanic
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-medium text-sm transition-colors border border-neutral-700"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-sm transition-colors border border-gray-300"
                 >
                   Our Story & Guarantee
                 </Link>
@@ -196,7 +196,7 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900 shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-2xl">
                 <img
                   src="/assets/mechanic-checking-car-engine-in-a-clean-garage-kwey.svg"
                   alt="Mechanic checking car engine in Atlanta workshop"
@@ -204,13 +204,13 @@ export default function HomePage() {
                   height="420"
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-lg bg-neutral-950/80 backdrop-blur-md border border-neutral-800 flex items-center justify-between">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-gray-200 flex items-center justify-between shadow-lg">
                   <div>
-                    <p className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Local Atlanta Guarantee</p>
-                    <p className="text-sm font-bold text-white mt-0.5">12-Month / 12,000-Mile Warranty on Parts & Labor</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Local Atlanta Guarantee</p>
+                    <p className="text-sm font-bold text-gray-900 mt-0.5">12-Month / 12,000-Mile Warranty on Parts & Labor</p>
                   </div>
-                  <ShieldCheck className="w-8 h-8 text-purple-400 shrink-0" />
+                  <ShieldCheck className="w-8 h-8 text-purple-600 shrink-0" />
                 </div>
               </div>
             </div>
@@ -221,29 +221,29 @@ export default function HomePage() {
       {/* Real Atlanta Driver Reviews */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-extrabold text-white tracking-tight">Local Customer Feedback</h2>
-          <p className="text-neutral-400 text-sm mt-3">
+          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Local Customer Feedback</h2>
+          <p className="text-gray-600 text-sm mt-3">
             Hear what Atlanta drivers have to say about our fast on-site repair visits and upfront pricing.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((rev, i) => (
-            <div key={i} className="p-6 rounded-xl bg-neutral-900/60 border border-neutral-800 flex flex-col justify-between hover:border-purple-600/40 transition-colors">
+            <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 flex flex-col justify-between hover:border-purple-300 shadow-sm hover:shadow-md transition-all">
               <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-3">
+                <div className="flex items-center gap-1 text-amber-500 mb-3">
                   {[...Array(rev.rating)].map((_, starIndex) => (
-                    <Star key={starIndex} className="w-4 h-4 fill-amber-400" />
+                    <Star key={starIndex} className="w-4 h-4 fill-amber-500" />
                   ))}
                 </div>
-                <p className="text-neutral-300 text-sm leading-relaxed italic">"{rev.comment}"</p>
+                <p className="text-gray-700 text-sm leading-relaxed italic">"{rev.comment}"</p>
               </div>
-              <div className="mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-bold text-white">{rev.name}</p>
-                  <p className="text-xs text-neutral-400">{rev.neighborhood}</p>
+                  <p className="text-sm font-bold text-gray-900">{rev.name}</p>
+                  <p className="text-xs text-gray-500">{rev.neighborhood}</p>
                 </div>
-                <span className="text-xs font-semibold text-purple-400 bg-purple-950/60 border border-purple-800/40 px-2 py-0.5 rounded">
+                <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md shadow-sm">
                   Verified Service
                 </span>
               </div>
@@ -253,26 +253,9 @@ export default function HomePage() {
       </section>
 
       {/* Interactive Service Request & Quote Section */}
-      <section id="request-form" className="py-20 bg-neutral-900/80 border-t border-neutral-800 relative scroll-mt-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/70 border border-purple-800/50 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-3">
-              <PhoneCall className="w-3.5 h-3.5 text-purple-400" />
-              Book Mobile Service
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Request a Mechanic or Upfront Quote
-            </h2>
-            <p className="mt-2 text-neutral-300 text-sm sm:text-base">
-              Tell us what is happening with your car and where you are located in Atlanta. We will reach out quickly with transparent pricing.
-            </p>
-          </div>
-
-          <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-2xl relative">
-            <ServiceRequestForm />
-          </div>
-        </div>
-      </section>
+      <div id="request-form">
+        <ServiceRequestForm />
+      </div>
     </div>
   );
 }

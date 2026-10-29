@@ -70,27 +70,27 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="bg-neutral-950 text-neutral-100 min-h-screen py-16">
+    <div className="bg-white text-gray-900 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */} 
+        {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-purple-400 text-xs font-semibold uppercase tracking-widest bg-purple-950/60 border border-purple-800/40 px-3 py-1 rounded-full">
+          <span className="text-purple-700 text-xs font-bold uppercase tracking-widest bg-purple-100 border border-purple-200 px-3.5 py-1.5 rounded-full shadow-sm">
             Mobile Repair Catalog
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-4">
+          <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight mt-4">
             Comprehensive Mobile Auto Services
           </h1>
-          <p className="mt-4 text-neutral-400 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
             Explore our on-demand repair solutions. From instant diagnostics to complete brake overhauls, our Atlanta mechanics arrive ready to resolve your issue.
           </p>
         </div>
 
-        {/* Service Categories Grid */} 
+        {/* Service Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {serviceCategories.map((cat, i) => (
-            <div key={i} className="rounded-2xl bg-neutral-900 border border-neutral-800 overflow-hidden hover:border-purple-600/40 transition-colors flex flex-col justify-between">
+            <div key={i} className="rounded-2xl bg-white border border-gray-200 overflow-hidden hover:border-purple-300 transition-colors shadow-sm hover:shadow-md flex flex-col justify-between">
               <div>
-                <div className="h-56 bg-neutral-950 overflow-hidden relative">
+                <div className="h-56 bg-gray-100 overflow-hidden relative">
                   <img
                     src={cat.image}
                     alt={cat.title}
@@ -98,16 +98,16 @@ export default function ServicesPage() {
                     height="320"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent opacity-80" />
                 </div>
                 <div className="p-6 sm:p-8">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">{cat.title}</h2>
-                  <p className="text-sm text-neutral-300 leading-relaxed mb-6">{cat.description}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{cat.title}</h2>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">{cat.description}</p>
                   <div className="space-y-2.5">
                     {cat.items.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
-                        <span className="text-xs sm:text-sm text-neutral-300">{item}</span>
+                        <Check className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+                        <span className="text-xs sm:text-sm text-gray-700">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -116,7 +116,7 @@ export default function ServicesPage() {
               <div className="p-6 sm:p-8 pt-0">
                 <Link
                   to="/#request-form"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-neutral-800 hover:bg-purple-600 text-white text-xs sm:text-sm font-semibold transition-colors border border-neutral-700 hover:border-purple-500"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gray-100 hover:bg-purple-600 text-gray-800 hover:text-white text-xs sm:text-sm font-semibold transition-colors border border-gray-300 hover:border-purple-600 shadow-sm"
                 >
                   Request This Service
                   <ArrowRight className="w-4 h-4" />
@@ -127,22 +127,22 @@ export default function ServicesPage() {
         </div>
 
         {/* Fleet Maintenance Callout */}
-        <div className="rounded-2xl bg-gradient-to-r from-purple-950/70 via-neutral-900 to-neutral-900 border border-purple-800/40 p-8 sm:p-12 mb-20 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="rounded-2xl bg-gradient-to-r from-purple-900 via-purple-950 to-gray-900 text-white border border-purple-800 p-8 sm:p-12 mb-20 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 text-purple-300 text-xs font-bold uppercase tracking-wider mb-2">
               <Shield className="w-4 h-4" />
               Commercial Support
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
               Keep Your Small Fleet Road-Ready
             </h2>
-            <p className="text-neutral-300 text-sm mt-3 leading-relaxed">
-              Delivery vans and service pickups make your business run. We schedule scheduled on-site inspections and rapid maintenance so your drivers spend less time idle and more time serving customers in Atlanta.
+            <p className="text-purple-100 text-sm mt-3 leading-relaxed">
+              Delivery vans and service pickups make your business run. We schedule routine on-site inspections and rapid maintenance so your drivers spend less time idle and more time serving customers in Atlanta.
             </p>
           </div>
           <Link
             to="/contact"
-            className="px-6 py-3.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm shrink-0 transition-all shadow-lg shadow-purple-950/80"
+            className="px-6 py-3.5 rounded-xl bg-white hover:bg-purple-50 text-purple-900 font-bold text-sm shrink-0 transition-all shadow-lg"
           >
             Inquire About Fleet Care
           </Link>
@@ -151,18 +151,18 @@ export default function ServicesPage() {
         {/* Common Questions */}
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 text-purple-700 text-xs font-bold uppercase tracking-wider mb-2">
               <HelpCircle className="w-4 h-4" />
               Frequently Asked Questions
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Everything You Need to Know</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Everything You Need to Know</h2>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="p-6 rounded-xl bg-neutral-900 border border-neutral-800">
-                <h3 className="text-base font-bold text-white">{faq.q}</h3>
-                <p className="text-sm text-neutral-300 mt-2 leading-relaxed">{faq.a}</p>
+              <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                <h3 className="text-base font-bold text-gray-900">{faq.q}</h3>
+                <p className="text-sm text-gray-600 mt-2 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
