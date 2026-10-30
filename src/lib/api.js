@@ -24,7 +24,7 @@ export async function getServiceRequests() {
 }
 
 export async function updateServiceRequestStatus(id, status) {
-  const res = await fetch('/api/service-requests', {
+  const res = await fetch(`/api/service-requests?id=${encodeURIComponent(id)}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id, status })
