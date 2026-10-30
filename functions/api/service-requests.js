@@ -132,26 +132,44 @@ export async function onRequestPatch({ request, env }) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const url = new URL(request.url);
+    const queryId = url.searchParams.get('id') || url.searchParams.get('requestId') || url.searchParams.get('request_id');
+    const queryStatus = url.searchParams.get('status');
+
     let body = {};
     try {
       body = await request.json();
     } catch (e) {
-      return Response.json({ error: 'Invalid JSON' }, { status: 400 });
+      body = {};
     }
 
-    const id = typeof body.id === 'string' ? body.id.trim() : '';
-    const status = typeof body.status === 'string' ? body.status.trim() : '';
+    const id = (typeof body.id === 'string' ? body.id.trim() : '') ||
+               (typeof queryId === 'string' ? queryId.trim() : '') ||
+               (typeof body.requestId === 'string' ? body.requestId.trim() : '') ||
+               (typeof body.request_id === 'string' ? body.request_id.trim() : '');
+
+    const status = (typeof body.status === 'string' ? body.status.trim() : '') ||
+                   (typeof queryStatus === 'string' ? queryStatus.trim() : '');
+
     const allowedStatuses = ['pending', 'in-progress', 'completed', 'cancelled'];
 
     if (!id || !allowedStatuses.includes(status)) {
       return Response.json({ error: 'Invalid id or status' }, { status: 400 });
     }
 
+    const existing = await env.DB.prepare(
+      'SELECT id, status FROM service_requests WHERE id = ?1'
+    ).bind(id).first();
+
+    if (!existing) {
+      return Response.json({ error: 'Service request not found' }, { status: 404 });
+    }
+
     const { meta } = await env.DB.prepare(
       'UPDATE service_requests SET status = ?1 WHERE id = ?2'
     ).bind(status, id).run();
 
-    if (!meta.changes) {
+    if (!meta.changes && existing.status !== status) {
       return Response.json({ error: 'Service request not found' }, { status: 404 });
     }
 

@@ -17,15 +17,18 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
   });
   const [vinLoading, setVinLoading] = useState(false);
   const [vinError, setVinError] = useState('');
+  const [vinSuccess, setVinSuccess] = useState('');
 
   const handleVinLookup = async () => {
-    const vin = formData.vin.trim();
+    const vin = formData.vin.trim().toUpperCase();
     if (!vin || vin.length < 5) {
       setVinError('Please enter a valid VIN');
+      setVinSuccess('');
       return;
     }
     setVinLoading(true);
     setVinError('');
+    setVinSuccess('');
     try {
       const res = await fetch('/api/vin-lookup', {
         method: 'POST',
@@ -33,23 +36,32 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
         body: JSON.stringify({ vin })
       });
       const data = await res.json();
-      if (res.ok && data.data) {
-        const veh = data.data;
+      const veh = data?.data || data?.vehicle || data?.result || (data?.display_name ? data : null);
+      if (res.ok && veh) {
+        let extractedYear = '';
+        if (veh.year) extractedYear = String(veh.year);
+        else if (veh.model_year) extractedYear = String(veh.model_year);
+        else if (veh.display_name) {
+          const match = String(veh.display_name).match(/\b(19\d\d|20\d\d)\b/);
+          if (match) extractedYear = match[0];
+          else extractedYear = String(veh.display_name).split(' ')[0];
+        }
+
+        const extractedMake = veh.make || veh.brand || '';
+        const extractedModel = veh.model || '';
+
         setFormData(prev => ({
           ...prev,
-          vehicle_year: veh.year ? String(veh.year) : (veh.display_name ? veh.display_name.split(' ')[0] : prev.vehicle_year),
-          vehicle_make: veh.make || prev.vehicle_make,
-          vehicle_model: veh.model || prev.vehicle_model
+          vin,
+          vehicle_year: extractedYear || prev.vehicle_year,
+          vehicle_make: extractedMake || prev.vehicle_make,
+          vehicle_model: extractedModel || prev.vehicle_model
         }));
-      } else if (res.ok && data.vehicle) {
-        setFormData(prev => ({
-          ...prev,
-          vehicle_year: data.vehicle.year || prev.vehicle_year,
-          vehicle_make: data.vehicle.make || prev.vehicle_make,
-          vehicle_model: data.vehicle.model || prev.vehicle_model
-        }));
+
+        const label = [extractedYear, extractedMake, extractedModel].filter(Boolean).join(' ') || veh.display_name || 'Vehicle decoded';
+        setVinSuccess(`Decoded: ${label}`);
       } else {
-        setVinError(data.error || 'Could not decode VIN. Please fill details manually.');
+        setVinError(data?.error || 'Could not decode VIN. Please fill details manually.');
       }
     } catch (err) {
       setVinError('VIN lookup failed. Please enter details manually.');
@@ -241,6 +253,7 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
                     </button>
                   </div>
                   {vinError && <p className="text-xs text-red-600 mt-1 font-medium">{vinError}</p>}
+                  {vinSuccess && <p className="text-xs text-emerald-600 mt-1 font-medium">{vinSuccess}</p>}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
