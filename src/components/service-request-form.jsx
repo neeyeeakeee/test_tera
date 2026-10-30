@@ -7,6 +7,7 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
     name: '',
     phone: '',
     email: '',
+    vin: '',
     vehicle_year: '',
     vehicle_make: '',
     vehicle_model: '',
@@ -14,6 +15,40 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
     address: '',
     notes: ''
   });
+  const [vinLoading, setVinLoading] = useState(false);
+  const [vinError, setVinError] = useState('');
+
+  const handleVinLookup = async () => {
+    const vin = formData.vin.trim();
+    if (!vin || vin.length < 5) {
+      setVinError('Please enter a valid VIN');
+      return;
+    }
+    setVinLoading(true);
+    setVinError('');
+    try {
+      const res = await fetch('/api/vin-lookup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ vin })
+      });
+      const data = await res.json();
+      if (res.ok && data.vehicle) {
+        setFormData(prev => ({
+          ...prev,
+          vehicle_year: data.vehicle.year || prev.vehicle_year,
+          vehicle_make: data.vehicle.make || prev.vehicle_make,
+          vehicle_model: data.vehicle.model || prev.vehicle_model
+        }));
+      } else {
+        setVinError(data.error || 'Could not decode VIN. Please fill details manually.');
+      }
+    } catch (err) {
+      setVinError('VIN lookup failed. Please enter details manually.');
+    } finally {
+      setVinLoading(false);
+    }
+  };
 
   const [status, setStatus] = useState({ state: 'idle', message: '' });
 
@@ -167,52 +202,79 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
 
               <div className="border-b border-gray-200 pb-4 pt-2">
                 <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900 mb-1">
-                  2. Vehicle Information
+                  2. Vehicle Information & VIN Lookup
                 </h4>
                 <p className="text-xs text-gray-500">
-                  Details ensure our mobile mechanic arrives with matching diagnostics and parts.
+                  Enter your vehicle VIN to instantly auto-fill year, make, and model.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Year
+                    Vehicle VIN (17 Characters)
                   </label>
-                  <input
-                    type="text"
-                    name="vehicle_year"
-                    value={formData.vehicle_year}
-                    onChange={handleChange}
-                    placeholder="e.g. 2019"
-                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
-                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      name="vin"
+                      value={formData.vin}
+                      onChange={handleChange}
+                      placeholder="Enter VIN for instant lookup"
+                      className="flex-1 px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm uppercase focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors font-mono"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleVinLookup}
+                      disabled={vinLoading}
+                      className="px-4 py-2.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm shrink-0 disabled:opacity-50"
+                    >
+                      {vinLoading ? 'Decoding...' : 'Lookup VIN'}
+                    </button>
+                  </div>
+                  {vinError && <p className="text-xs text-red-600 mt-1 font-medium">{vinError}</p>}
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Make
-                  </label>
-                  <input
-                    type="text"
-                    name="vehicle_make"
-                    value={formData.vehicle_make}
-                    onChange={handleChange}
-                    placeholder="e.g. Toyota, Ford, BMW"
-                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Model
-                  </label>
-                  <input
-                    type="text"
-                    name="vehicle_model"
-                    value={formData.vehicle_model}
-                    onChange={handleChange}
-                    placeholder="e.g. Camry, F-150, 330i"
-                    className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
-                  />
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Year
+                    </label>
+                    <input
+                      type="text"
+                      name="vehicle_year"
+                      value={formData.vehicle_year}
+                      onChange={handleChange}
+                      placeholder="e.g. 2019"
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Make
+                    </label>
+                    <input
+                      type="text"
+                      name="vehicle_make"
+                      value={formData.vehicle_make}
+                      onChange={handleChange}
+                      placeholder="e.g. Toyota, Ford, BMW"
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Model
+                    </label>
+                    <input
+                      type="text"
+                      name="vehicle_model"
+                      value={formData.vehicle_model}
+                      onChange={handleChange}
+                      placeholder="e.g. Camry, F-150, 330i"
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors"
+                    />
+                  </div>
                 </div>
               </div>
 

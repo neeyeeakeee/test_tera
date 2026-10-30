@@ -17,6 +17,9 @@ async function ensureDb(db) {
   if (isDbReady || !db) return;
   try {
     await db.prepare("CREATE TABLE IF NOT EXISTS service_requests (id TEXT PRIMARY KEY, name TEXT NOT NULL, phone TEXT NOT NULL, email TEXT NOT NULL, vehicle_year TEXT, vehicle_make TEXT, vehicle_model TEXT, issue TEXT NOT NULL, address TEXT, notes TEXT, status TEXT NOT NULL DEFAULT 'pending', created_at TEXT NOT NULL)").run();
+    try {
+      await db.prepare("ALTER TABLE service_requests ADD COLUMN vin TEXT").run();
+    } catch (e) {}
     await db.prepare("CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, salt TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'driver', created_at TEXT NOT NULL)").run();
     await db.prepare("CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY, user_id TEXT NOT NULL, token TEXT UNIQUE NOT NULL, expires_at TEXT NOT NULL, created_at TEXT NOT NULL)").run();
     isDbReady = true;
@@ -56,6 +59,7 @@ export async function onRequestPost({ request, env }) {
     const name = typeof body.name === 'string' ? body.name.trim() : '';
     const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
     const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+    const vin = typeof body.vin === 'string' ? body.vin.trim().slice(0, 30) : '';
     const vehicleYear = typeof body.vehicle_year === 'string' ? body.vehicle_year.trim().slice(0, 10) : '';
     const vehicleMake = typeof body.vehicle_make === 'string' ? body.vehicle_make.trim().slice(0, 50) : '';
     const vehicleModel = typeof body.vehicle_model === 'string' ? body.vehicle_model.trim().slice(0, 50) : '';
@@ -81,12 +85,13 @@ export async function onRequestPost({ request, env }) {
     const createdAt = new Date().toISOString();
 
     await env.DB.prepare(
-      'INSERT INTO service_requests (id, name, phone, email, vehicle_year, vehicle_make, vehicle_model, issue, address, notes, status, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)'
+      'INSERT INTO service_requests (id, name, phone, email, vin, vehicle_year, vehicle_make, vehicle_model, issue, address, notes, status, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)'
     ).bind(
       id,
       name,
       phone,
       email,
+      vin || null,
       vehicleYear || null,
       vehicleMake || null,
       vehicleModel || null,
@@ -111,7 +116,7 @@ export async function onRequestGet({ request, env }) {
     }
 
     const { results } = await env.DB.prepare(
-      'SELECT id, name, phone, email, vehicle_year, vehicle_make, vehicle_model, issue, address, notes, status, created_at FROM service_requests ORDER BY created_at DESC LIMIT 100'
+      'SELECT id, name, phone, email, vin, vehicle_year, vehicle_make, vehicle_model, issue, address, notes, status, created_at FROM service_requests ORDER BY created_at DESC LIMIT 100'
     ).all();
 
     return Response.json({ requests: results || [] });
