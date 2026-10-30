@@ -1,307 +1,254 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShieldCheck, Truck, Wrench, ArrowRight, Star, Clock, CheckCircle2 } from 'lucide-react';
-import ProductCard from '../components/product-card.jsx';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Wrench, ShieldCheck, Clock, MapPin, CheckCircle2, Star, Car, ArrowRight, Zap, PhoneCall } from 'lucide-react';
 import HeroSlider from '../components/hero-slider.jsx';
-import { api } from '../lib/api.js';
-
-const CATEGORIES = [
-  {
-    name: 'Brakes & Rotors',
-    slug: 'brakes',
-    description: 'Ceramic pads, heavy-duty rotors & calipers',
-    image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    name: 'Batteries & Starters',
-    slug: 'batteries',
-    description: 'High-crank AGM batteries and starter motors',
-    image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    name: 'Engine & Ignition',
-    slug: 'engine',
-    description: 'Spark plugs, coils, alternators & filters',
-    image: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    name: 'Diagnostics & Sensors',
-    slug: 'diagnostics',
-    description: 'O2 sensors, MAF sensors & OBD scan tools',
-    image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80'
-  }
-];
+import ServiceCard from '../components/service-card.jsx';
+import HowItWorks from '../components/how-it-works.jsx';
+import ServiceRequestForm from '../components/service-request-form.jsx';
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function loadFeatured() {
-      try {
-        const res = await api.get('/api/products?limit=6');
-        if (res.ok && Array.isArray(res.data?.products)) {
-          setFeaturedProducts(res.data.products);
-        }
-      } catch (err) {
-        console.error('Error loading featured parts:', err);
-      } finally {
-        setLoading(false);
-      }
+  const services = [
+    {
+      id: 'diagnostics',
+      title: 'Mobile Diagnostics & Troubleshooting',
+      description: 'Check engine light on or car won\'t start? Our certified technicians come directly to your driveway with high-end diagnostic gear.',
+      image: '/assets/mobile-mechanic-doing-diagnostic-test-on-car-5kup.svg',
+      badge: 'Most Requested',
+      features: ['OBD-II error scans', 'No-start troubleshooting', 'Comprehensive multi-point check']
+    },
+    {
+      id: 'brakes',
+      title: 'Brake Pad & Rotor Replacement',
+      description: 'Squeaking, grinding, or soft pedals? Get premium ceramic pads and fresh rotors replaced on-site without losing a full day at the shop.',
+      image: '/assets/mechanic-changing-brake-pads-on-a-vehicle-wny3.svg',
+      badge: 'Essential Safety',
+      features: ['Front & rear brake sets', 'Rotor replacement & resurfacing', 'Brake fluid level inspection']
+    },
+    {
+      id: 'battery',
+      title: 'Battery, Alternator & Starter',
+      description: 'Stranded in your office parking lot or garage? Fast mobile battery testing and on-the-spot replacement across the Atlanta metro.',
+      image: '/assets/mechanic-replacing-car-battery-outdoors-1424.svg',
+      badge: 'Fast Response',
+      features: ['12V battery test & replacement', 'Alternator load output check', 'Starter motor diagnostics']
+    },
+    {
+      id: 'engine',
+      title: 'Engine & Cooling System Repairs',
+      description: 'Overheated engines, radiator leaks, serpentine belt replacements, and spark plug renewals handled directly where your car is parked.',
+      image: '/assets/car-engine-repair-on-the-road-hpfr.svg',
+      badge: 'Certified Pros',
+      features: ['Cooling system pressure tests', 'Belt & hose swap', 'Spark plugs & ignition coils']
     }
-    loadFeatured();
-  }, []);
+  ];
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/catalog?search=${encodeURIComponent(searchQuery.trim())}`);
-    } else {
-      navigate('/catalog');
+  const trustPoints = [
+    {
+      icon: ShieldCheck,
+      title: 'Vetted Master Mechanics',
+      text: 'Every technician is rigorously screened, background-checked, and equipped with professional workshop-grade tools.'
+    },
+    {
+      icon: Clock,
+      title: 'Upfront Pricing Guarantee',
+      text: 'No hidden shop supplies fees or arbitrary dealer markups. You know the exact cost before work starts.'
+    },
+    {
+      icon: Zap,
+      title: 'Uber-Style Convenience',
+      text: 'Skip the tow truck and boring waiting rooms. We dispatch certified mobile repair directly to your location in Atlanta.'
+    },
+    {
+      icon: MapPin,
+      title: 'Serving Greater Atlanta',
+      text: 'Covering Downtown, Midtown, Buckhead, Decatur, Sandy Springs, Marietta, Alpharetta, and surrounding communities.'
     }
-  };
+  ];
+
+  const reviews = [
+    {
+      name: 'Marcus Vance',
+      neighborhood: 'Midtown Atlanta',
+      rating: 5,
+      comment: 'Car died in my apartment parking deck. Quick Mechs sent a tech who diagnosed a dead alternator and swapped it out right there. Saved me hundreds on a tow truck.'
+    },
+    {
+      name: 'Elena Rostova',
+      neighborhood: 'Buckhead',
+      rating: 5,
+      comment: 'Replaced my brake pads and rotors while I worked from home. The upfront estimate was exactly what I paid. Professional, clean, and zero hassle.'
+    },
+    {
+      name: 'David Jenkins',
+      neighborhood: 'Sandy Springs',
+      rating: 5,
+      comment: 'Feels like Uber for auto mechanics. Transparent, polite technician, and excellent communication throughout. Highly recommend for any busy professional.'
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Hero Section */}
-      <section className="relative bg-slate-950 text-white overflow-hidden py-16 md:py-24 border-b border-purple-950">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="bg-white text-gray-900 min-h-screen">
+      <HeroSlider />
+
+      <section className="border-y border-gray-200 bg-gray-50/80 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trustPoints.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="flex items-start gap-3.5 p-5 rounded-2xl bg-white border border-gray-200 hover:border-gray-900 shadow-sm transition-colors">
+                  <div className="p-2.5 rounded-xl bg-gray-100 border border-gray-200 text-gray-900 shrink-0 shadow-sm">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-sm text-gray-900">{item.title}</h3>
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-gray-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Wrench className="w-3.5 h-3.5 text-gray-900" />
+            Full-Service Mobile Workshop
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Classic Auto Shop Expertise, Brought to Your Doorstep
+          </h2>
+          <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
+            Skip traditional repair shop wait times and expensive towing bills. Our Atlanta mechanics come to your home, office, or roadside with professional-grade diagnostics and quality replacement parts.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service) => (
+            <ServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-800 font-semibold text-sm transition-all shadow-sm"
+          >
+            View All Maintenance & Repair Services
+            <ArrowRight className="w-4 h-4 text-gray-900" />
+          </Link>
+        </div>
+      </section>
+
+      <HowItWorks />
+
+      <section className="py-20 bg-gray-50 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950 border border-purple-800/60 text-purple-300 text-xs sm:text-sm font-medium">
-                <Clock className="w-4 h-4" />
-                Fast Shipping & Verified Vehicle Fitment in Atlanta, GA
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-gray-900 text-xs font-bold uppercase tracking-wider shadow-sm">
+                <Car className="w-3.5 h-3.5 text-gray-900" />
+                Transparent & Honest Auto Care
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white">
-                Reliable Auto Parts, <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-400">
-                  Delivered Fast & Fairly Priced
-                </span>
-              </h1>
-              <p className="text-lg text-slate-300 max-w-2xl leading-relaxed">
-                Browse certified replacement components, pre-order high-demand parts, and check real-time stock levels. No shop runarounds—just upfront pricing and guaranteed compatibility.
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Why Atlanta Drivers Choose Quick Mechs Over Dealerships
+              </h2>
+              <p className="text-gray-600 text-base leading-relaxed">
+                Traditional repair facilities often hit drivers with unexpected diagnostic fees, high markups, and days without transportation. We built Quick Mechs to deliver genuine master craftsmanship with modern on-demand transparency.
               </p>
 
-              {/* Hero Search Bar */}
-              <form onSubmit={handleSearchSubmit} className="max-w-2xl bg-slate-900 p-2 rounded-2xl shadow-xl flex flex-col sm:flex-row gap-2 border border-purple-900/50">
-                <div className="relative flex-1 flex items-center pl-3">
-                  <Search className="w-5 h-5 text-slate-400 shrink-0" />
-                  <input
-                    type="text"
-                    placeholder="Search by part name, part number, or vehicle model..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-3 pr-2 py-2 text-white bg-transparent placeholder-slate-400 text-sm focus:outline-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-3 rounded-xl transition duration-150 flex items-center justify-center gap-2 shadow-sm text-sm shrink-0"
+              <div className="space-y-4 pt-2">
+                {[
+                  'No towing required—our mobile service trucks come to you fully equipped.',
+                  'Direct communication with the certified mechanic working on your vehicle.',
+                  'Upfront quotes with explicit itemized breakdowns before any wrench turns.',
+                  'Coverage across Atlanta for both personal vehicles and light commercial fleets.'
+                ].map((point, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-gray-900 shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-700">{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 flex flex-wrap gap-4">
+                <a
+                  href="#request-form"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-sm transition-all shadow-lg shadow-gray-200"
                 >
-                  Search Parts
+                  Request a Mechanic
                   <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-
-              <div className="flex flex-wrap items-center gap-6 pt-2 text-xs sm:text-sm text-slate-400 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                  <span>Upfront Pricing</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                  <span>Live Stock & Pre-orders</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                  <span>Verified OEM & Aftermarket</span>
-                </div>
+                </a>
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-sm transition-colors border border-gray-300"
+                >
+                  Our Story & Guarantee
+                </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative">
-              <HeroSlider />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works / Value Props */}
-      <section className="py-12 bg-slate-900 border-b border-purple-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4 p-5 rounded-xl bg-slate-950 border border-purple-900/40">
-              <div className="w-12 h-12 rounded-xl bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center shrink-0">
-                <Search className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-base">1. Check Fitment & Stock</h3>
-                <p className="text-sm text-slate-300 mt-1 leading-relaxed">
-                  Search your vehicle's make, model, or part number to verify exact compatibility and instant live availability.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-5 rounded-xl bg-slate-950 border border-purple-900/40">
-              <div className="w-12 h-12 rounded-xl bg-blue-950 text-blue-400 border border-blue-800 flex items-center justify-center shrink-0">
-                <Truck className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-base">2. Order or Pre-Order</h3>
-                <p className="text-sm text-slate-300 mt-1 leading-relaxed">
-                  Secure in-stock components immediately or pre-order rare components with accurate tracking and status updates.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-5 rounded-xl bg-slate-950 border border-purple-900/40">
-              <div className="w-12 h-12 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-base">3. Transparent Quality</h3>
-                <p className="text-sm text-slate-300 mt-1 leading-relaxed">
-                  All parts pass strict mechanical safety standards with authentic buyer reviews and fair, transparent pricing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Categories */}
-      <section className="py-16 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Browse By System</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Popular Parts Categories</h2>
-            </div>
-            <Link
-              to="/catalog"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-purple-400 hover:text-purple-300 transition"
-            >
-              View Full Catalog <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CATEGORIES.map((cat) => (
-              <Link
-                key={cat.slug}
-                to={`/catalog?category=${cat.slug}`}
-                className="group bg-slate-900 rounded-2xl border border-purple-900/40 overflow-hidden shadow-sm hover:shadow-md hover:border-purple-500 transition duration-200 flex flex-col"
-              >
-                <div className="relative h-44 bg-slate-950 overflow-hidden">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
-                    width="400"
-                    height="260"
-                  />
-                  <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition" />
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-2xl">
+                <img
+                  src="/assets/mechanic-checking-car-engine-in-a-clean-garage-kwey.svg"
+                  alt="Mechanic checking car engine in Atlanta workshop"
+                  width="640"
+                  height="420"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-gray-200 flex items-center justify-between shadow-lg">
                   <div>
-                    <h3 className="font-bold text-white text-lg group-hover:text-purple-400 transition">
-                      {cat.name}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-                      {cat.description}
-                    </p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Local Atlanta Guarantee</p>
+                    <p className="text-sm font-bold text-gray-900 mt-0.5">12-Month / 12,000-Mile Warranty on Parts & Labor</p>
                   </div>
-                  <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-purple-400 group-hover:text-purple-300">
-                    <span>Explore items</span>
-                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition" />
-                  </div>
+                  <ShieldCheck className="w-8 h-8 text-gray-900 shrink-0" />
                 </div>
-              </Link>
-            ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Parts Inventory */}
-      <section className="py-16 bg-slate-900 border-t border-purple-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Immediate Dispatch & Pre-order</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Featured Vehicle Parts</h2>
-            </div>
-            <Link
-              to="/catalog"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-purple-400 hover:text-purple-300 transition"
-            >
-              Browse All Stock <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-slate-950 rounded-2xl h-80 animate-pulse border border-purple-900/40" />
-              ))}
-            </div>
-          ) : featuredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 bg-slate-950 rounded-2xl border border-dashed border-purple-900/50">
-              <Wrench className="w-12 h-12 text-slate-500 mx-auto mb-3" />
-              <p className="text-slate-300 font-medium">Catalog is currently being indexed.</p>
-              <Link
-                to="/catalog"
-                className="inline-block mt-4 px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition"
-              >
-                Go to Catalog
-              </Link>
-            </div>
-          )}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Local Customer Feedback</h2>
+          <p className="text-gray-600 text-sm mt-3">
+            Hear what Atlanta drivers have to say about our fast on-site repair visits and upfront pricing.
+          </p>
         </div>
-      </section>
 
-      {/* Guarantee & Local Service Banner */}
-      <section className="py-16 bg-slate-950 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-gradient-to-r from-slate-900 to-purple-950/60 border border-purple-900/50 p-8 sm:p-12 rounded-3xl shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-950 text-purple-300 border border-purple-700">
-                  The Quick Mechs Commitment
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {reviews.map((rev, i) => (
+            <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 flex flex-col justify-between hover:border-gray-900 shadow-sm hover:shadow-md transition-all">
+              <div>
+                <div className="flex items-center gap-1 text-amber-500 mb-3">
+                  {[...Array(rev.rating)].map((_, starIndex) => (
+                    <Star key={starIndex} className="w-4 h-4 fill-amber-500" />
+                  ))}
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed italic">"{rev.comment}"</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-bold text-gray-900">{rev.name}</p>
+                  <p className="text-xs text-gray-500">{rev.neighborhood}</p>
+                </div>
+                <span className="text-xs font-bold text-gray-900 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-md shadow-sm">
+                  Verified Service
                 </span>
-                <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-                  Tired of repair shop markup and waiting weeks?
-                </h2>
-                <p className="text-slate-300 text-base leading-relaxed">
-                  Every part in our catalog comes with detailed specifications, direct customer reviews, and clear stock status. If a part is marked for pre-order, you get real-time fulfillment updates until it lands at your doorstep or garage.
-                </p>
-              </div>
-              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 justify-center">
-                <Link
-                  to="/catalog"
-                  className="bg-purple-600 hover:bg-purple-500 text-white font-black px-6 py-4 rounded-xl text-center shadow-lg transition duration-150"
-                >
-                  Start Shopping Now
-                </Link>
-                <Link
-                  to="/catalog?category=brakes"
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-4 rounded-xl text-center border border-purple-900/60 transition duration-150"
-                >
-                  Explore Brake Systems
-                </Link>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
+
+      <div id="request-form">
+        <ServiceRequestForm />
+      </div>
     </div>
   );
 }
