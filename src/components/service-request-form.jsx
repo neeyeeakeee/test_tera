@@ -33,7 +33,15 @@ export default function ServiceRequestForm({ preselectedIssue = '' }) {
         body: JSON.stringify({ vin })
       });
       const data = await res.json();
-      if (res.ok && data.vehicle) {
+      if (res.ok && data.data) {
+        const veh = data.data;
+        setFormData(prev => ({
+          ...prev,
+          vehicle_year: veh.year ? String(veh.year) : (veh.display_name ? veh.display_name.split(' ')[0] : prev.vehicle_year),
+          vehicle_make: veh.make || prev.vehicle_make,
+          vehicle_model: veh.model || prev.vehicle_model
+        }));
+      } else if (res.ok && data.vehicle) {
         setFormData(prev => ({
           ...prev,
           vehicle_year: data.vehicle.year || prev.vehicle_year,
