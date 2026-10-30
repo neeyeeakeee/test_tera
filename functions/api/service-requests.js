@@ -151,10 +151,6 @@ export async function onRequestPatch({ request, env }) {
       'UPDATE service_requests SET status = ?1 WHERE id = ?2'
     ).bind(status, id).run();
 
-    if (!meta.changes) {
-      return Response.json({ error: 'Service request not found' }, { status: 404 });
-    }
-
     return Response.json({ ok: true });
   } catch (err) {
     return Response.json({ error: 'Failed to update service request' }, { status: 500 });

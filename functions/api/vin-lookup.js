@@ -1,10 +1,18 @@
 export async function onRequestPost({ request, env }) {
   try {
+    if (!env.DB) {
+      return Response.json({ error: 'Database unavailable' }, { status: 500 });
+    }
+    const apiKey = env.SVC_QUICKMECHSAIADMIN_API_KEY;
+    if (!apiKey) {
+      return Response.json({ error: 'QuickMechs AI Admin API key is not configured' }, { status: 500 });
+    }
+
     let body = {};
     try {
       body = await request.json();
     } catch (e) {
-      return Response.json({ error: 'Invalid JSON body' }, { status: 400 });
+      return Response.json({ error: 'Invalid JSON' }, { status: 400 });
     }
 
     const vin = typeof body.vin === 'string' ? body.vin.trim() : '';
@@ -12,49 +20,29 @@ export async function onRequestPost({ request, env }) {
       return Response.json({ error: 'Valid VIN is required' }, { status: 400 });
     }
 
-    const apiKey = env.SVC_QUICKMECHSAIADMIN_API_KEY;
-    if (!apiKey) {
-      return Response.json({ error: 'QuickMechs AI Admin API key is not configured' }, { status: 500 });
-    }
-
-    const response = await fetch(`https://dev.aiadmin.quickmechs.com/api/vin?vin=${encodeURIComponent(vin)}`, {
+    const apiRes = await fetch('https://dev.api.aiadmin.quickmechs.com/api/v1/predict/vehicle-lookup', {
+      method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Accept': 'application/json'
-      }
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({ vin })
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      let errorMsg = 'Failed to decode VIN from service';
-      try {
-        const errJson = JSON.parse(errorText);
-        if (errJson.error || errJson.message) {
-          errorMsg = errJson.error || errJson.message;
-        }
-      } catch (e) {}
-      return Response.json({ error: errorMsg }, { status: 400 });
-    }
-
-    const text = await response.text();
+    const text = await apiRes.text();
     let data = {};
     try {
       data = JSON.parse(text);
-    } catch (e) {
-      return Response.json({ error: 'Invalid response from VIN service' }, { status: 400 });
+    } catch (err) {
+      data = { raw: text };
     }
 
-    const vehicleInfo = data.vehicle || data.data || data;
+    if (!apiRes.ok) {
+      return Response.json({ error: data.error || 'Vehicle lookup failed from external service' }, { status: apiRes.status });
+    }
 
-    return Response.json({
-      ok: true,
-      vehicle: {
-        year: vehicleInfo.year || vehicleInfo.vehicle_year || vehicleInfo.model_year || '',
-        make: vehicleInfo.make || vehicleInfo.vehicle_make || '',
-        model: vehicleInfo.model || vehicleInfo.vehicle_model || ''
-      }
-    }, { status: 200 });
+    return Response.json(data);
   } catch (err) {
-    return Response.json({ error: 'VIN lookup service unavailable' }, { status: 500 });
+    return Response.json({ error: 'Failed to complete VIN lookup' }, { status: 500 });
   }
 }
