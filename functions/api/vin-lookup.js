@@ -25,18 +25,35 @@ export async function onRequestPost({ request, env }) {
     });
 
     if (!response.ok) {
-      return Response.json({ error: 'Failed to decode VIN from service' }, { status: 400 });
+      const errorText = await response.text();
+      let errorMsg = 'Failed to decode VIN from service';
+      try {
+        const errJson = JSON.parse(errorText);
+        if (errJson.error || errJson.message) {
+          errorMsg = errJson.error || errJson.message;
+        }
+      } catch (e) {}
+      return Response.json({ error: errorMsg }, { status: 400 });
     }
 
-    const data = await response.json();
+    const text = await response.text();
+    let data = {};
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      return Response.json({ error: 'Invalid response from VIN service' }, { status: 400 });
+    }
+
+    const vehicleInfo = data.vehicle || data.data || data;
+
     return Response.json({
       ok: true,
       vehicle: {
-        year: data.year || data.vehicle_year || '',
-        make: data.make || data.vehicle_make || '',
-        model: data.model || data.vehicle_model || ''
+        year: vehicleInfo.year || vehicleInfo.vehicle_year || vehicleInfo.model_year || '',
+        make: vehicleInfo.make || vehicleInfo.vehicle_make || '',
+        model: vehicleInfo.model || vehicleInfo.vehicle_model || ''
       }
-    });
+    }, { status: 200 });
   } catch (err) {
     return Response.json({ error: 'VIN lookup service unavailable' }, { status: 500 });
   }
